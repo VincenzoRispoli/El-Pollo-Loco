@@ -14,9 +14,14 @@
         height: 35px;
         width: 35px;
     }
+
+    .coinsAndBottleCount-fullscreen {
+        font-size: 40px;
+    }
 }
 
 @media (max-width: 768px) {
+
     .chracter-mission-and-game-buttons {
         padding: 16px;
     }

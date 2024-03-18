@@ -200,7 +200,7 @@ function stopSmallChicken() {
 /**
  * This function resume the jump and gravity animation of Small Chicken when the game is resumed
  */
-function resumeSmallChicken(){
+function resumeSmallChicken() {
     world.level.enemies.forEach((enemy) => {
         enemy.theGameIsPaused = false;
         enemy.acceleration = 3;
@@ -243,6 +243,7 @@ function fullScreen() {
     biggerButtons();
     biggerIcons();
     biggerGameButtons();
+    biggerTitlesBottlesCoinsCount();
     document.getElementById('new-bottles-advice').classList.add('fullscreen-advice')
 }
 
@@ -293,6 +294,7 @@ function fullScreenEscape(event) {
     shrinkButtons();
     shrinkIcons();
     schrinkGameButton();
+    shrinkTitlesBottlesCoinsCount();
     document.getElementById('new-bottles-advice').classList.remove('fullscreen-advice')
     event.stopPropagation();
 }
@@ -337,6 +339,30 @@ function schrinkGameButton() {
     document.getElementById('arrow-right').classList.remove('fullScreen-game-buttons');
     document.getElementById('jump').classList.remove('fullScreen-game-buttons');
     document.getElementById('bottle').classList.remove('fullScreen-game-buttons');
+}
+
+/**
+ * This function enlarges the font size of bottle and coin counts titles and numbers
+ */
+function biggerTitlesBottlesCoinsCount() {
+    let countTitles = document.getElementsByClassName('count');
+    let countTitlesAsArray = [...countTitles];
+    console.log(countTitlesAsArray);
+    countTitlesAsArray.forEach(title => {
+        title.classList.add('coinsAndBottleCount-fullscreen');
+    })
+}
+
+/**
+ * This function shrinks the font size of bottle and coin counts titles and numbers
+ */
+function shrinkTitlesBottlesCoinsCount() {
+    let countTitles = document.getElementsByClassName('count');
+    let countTitlesAsArray = [...countTitles];
+    console.log(countTitlesAsArray);
+    countTitlesAsArray.forEach(title => {
+        title.classList.remove('coinsAndBottleCount-fullscreen');
+    })
 }
 /**
  * This event listener shrinks the the pause and play game, pause and play music and fullscreen icons 

@@ -48,7 +48,7 @@ class MovableObject extends DrawbleObject {
     /**
      * This function check the collision between the Character and other movable objects within the canvas
      * @param {object} mo - the movable object with which the Character or Bottle collides
-     * @returns - a boolean value of true if the object in question collides with a movable object, vertically and horizontally
+     * @returns {boolean} - a boolean value of true if the object in question collides with a movable object, vertically and horizontally
      */
     isColliding(mo) {
         return this.checkCollisionInBothDimensions(mo);
