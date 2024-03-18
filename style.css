@@ -1,0 +1,429 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Zabars";
+    src: url("fonts/Zabars.ttf") format("truetype");
+}
+
+body {
+    user-select: none;
+    margin: 0 auto;
+    height: 100vh;
+    background-image: url('img/5_background/desert.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    font-family: "Zabars", sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.game-title {
+    background: #d2af00;
+    border-radius: 35px;
+    border: 4px solid #fff;
+    padding: 16px;
+    font-size: 72px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+canvas {
+    display: block;
+    border-radius: 10px;
+    /* width: 100%;
+    height: 100%; */
+}
+
+.buttons-container {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    left: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.pause-and-play-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    padding: 8px;
+    border-radius: 50px;
+    background: #d2af00;
+    border: 2px solid #fff;
+    width: 56px;
+    height: 56px;
+    transition: all 0.5s cubic-bezier(.215, .61, .355, 1);
+}
+
+.pause-and-play-button:hover {
+    transform: scale(0.90);
+}
+
+.icon-play {
+    height: 48px;
+    width: 48px;
+    object-fit: cover
+}
+
+.icon-pause {
+    height: 48px;
+    width: 48px;
+    object-fit: cover
+}
+
+.button-audio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50px;
+    background: #d2af00;
+    border: 2px solid #fff;
+    width: 56px;
+    height: 56px;
+    outline: none;
+    transition: all 0.5s cubic-bezier(.215, .61, .355, 1);
+}
+
+.button-audio-container:hover {
+    transform: scale(0.90);
+}
+
+.audio-icon {
+    height: 24px;
+    width: 24px;
+    object-fit: cover
+}
+
+.button-fullscreen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50px;
+    background: #d2af00;
+    border: 2px solid #fff;
+    outline: none;
+    width: 56px;
+    height: 56px;
+    transition: all 0.5s cubic-bezier(.215, .61, .355, 1);
+}
+
+.button-fullscreen-container:hover {
+    transform: scale(0.90);
+}
+
+.fullscreen-icon {
+    height: 24px;
+    width: 24px;
+    object-fit: cover;
+}
+
+.compress-icon {
+    height: 24px;
+    width: 24px;
+    object-fit: cover;
+}
+
+.new-bottles-advice-container {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.07);
+    z-index: 99999;
+}
+
+.new-bottles-advice {
+    color: #fff;
+    font-weight: 100;
+    font-size: 32px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    animation-name: adviceTitle;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.fullscreen-advice {
+    font-size: 72px;
+}
+
+@keyframes adviceTitle {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.game-explanation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('img/5_background/first_half_background.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    transition: all 0.5s cubic-bezier(.215, .61, .355, 1);
+}
+
+.translate-explanation-pop-up {
+    transform: translateX(-100%);
+}
+
+.opacity {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.chracter-mission-and-game-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+.character-container {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+.pepe {
+    width: 150px;
+    object-fit: cover;
+    margin-top: -56px;
+}
+
+.mission {
+    color: #fff;
+    font-size: 32px;
+    padding: 24px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    box-sizing: border-box;
+}
+
+.button-game {
+    color: #fff;
+    font-size: 56px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.cross-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 48px;
+    width: 48px;
+    border: 1px solid #d2af00;
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    cursor: pointer;
+    border-radius: 50px;
+    box-sizing: border-box;
+    transition: all 0.6s cubic-bezier(.215, .61, .355, 1);
+}
+
+.cross-icon-container:hover {
+    cursor: pointer;
+    background: #eee;
+    transform: rotate(360deg);
+}
+
+.cross-icon-btn {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.cross-icon-btn:hover path {
+    stroke: #d2af00;
+}
+
+.startscreen {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 480px;
+    width: 720px;
+    background-image: url('img/9_intro_outro_screens/start/startscreen_2.png');
+    background-size: 99% 99%;
+    /* reduce the background-image of 1%*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    gap: 16px;
+    border-radius: 20px;
+}
+
+.startGame-button {
+    margin-top: 16px;
+    background: #d2af00;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: normal;
+    color: #fff;
+    font-family: "Zabars", sans-serif;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(.215, .61, .355, 1);
+}
+
+.startGame-button:hover {
+    background: #b69800;
+    cursor: pointer;
+    transform: translateY(2px);
+}
+
+.status-game-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+}
+
+.coins-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.bottles-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.endscreen-container {
+    display: block;
+    position: relative;
+    z-index: 999;
+}
+
+.endscreen-you-lost {
+    background-image: url('img/9_intro_outro_screens/game_over/oh no you lost!.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.endscreen-game-over {
+    background-image: url('img/9_intro_outro_screens/game_over/game over!.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.restart-game {
+    margin-top: 16px;
+    background: #d2af00;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: normal;
+    color: #fff;
+    font-family: "Zabars", sans-serif;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(.215, .61, .355, 1);
+}
+
+.restart-game:hover {
+    background: #b69800;
+    cursor: pointer;
+    transform: translateY(2px);
+}
+
+.traslateButtonsContainer {
+    justify-content: center;
+}
+
+.fullScreenButton {
+    border-radius: 100px;
+    height: 100px;
+    width: 100px;
+}
+
+.fullScreenIcons {
+    height: 60px;
+    width: 60px;
+}
+
+.opacity-audio-btn {
+    opacity: 0.5;
+}
+
+.d-none {
+    display: none;
+}

@@ -1,0 +1,444 @@
+@media (max-width: 1050px) {
+    .chracter-mission-and-game-buttons {
+        flex-direction: column;
+    }
+
+    .character-container {
+        width: 100%;
+        margin-bottom: 20px
+    }
+
+    .cross-icon-container {
+        top: 16px;
+        right: 16px;
+        height: 35px;
+        width: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .chracter-mission-and-game-buttons {
+        padding: 16px;
+    }
+
+    .cross-icon-container {
+        height: 32px;
+        width: 32px;
+        top: 8px;
+        right: 8px;
+    }
+
+    .pepe {
+        width: 80px;
+    }
+
+    .mission {
+        padding: 0;
+        font-size: 24px;
+    }
+
+    .buttons-game-container {
+        text-align: center;
+    }
+
+    .button-game {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 720px) {
+    .pause-and-play-button {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+    }
+
+    .icon-pause {
+        height: 32px;
+        width: 32px;
+    }
+
+    .icon-play {
+        height: 32px;
+        width: 32px;
+    }
+
+    .button-audio-container {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+    }
+
+    .audio-icon {
+        height: 20px;
+        width: 20px;
+    }
+
+    .button-fullscreen-container {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+    }
+
+    .fullscreen-icon {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+@media (max-width: 430px) {
+    .buttons-container {
+        gap: 6px;
+    }
+
+    .pause-and-play-button {
+        width: 28px;
+        height: 28px;
+        padding: 3px;
+    }
+
+    .icon-play {
+        height: 20px;
+        width: 20px;
+    }
+
+    .icon-pause {
+        height: 20px;
+        width: 20px;
+    }
+
+    .button-audio-container {
+        width: 28px;
+        height: 28px;
+        padding: 3px;
+    }
+
+    .audio-icon {
+        height: 16px;
+        width: 16px;
+    }
+
+    .button-fullscreen-container {
+        width: 28px;
+        height: 28px;
+        padding: 3px
+    }
+
+    .fullscreen-icon {
+        height: 14px;
+        width: 14px;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .startscreen {
+        width: 100%;
+    }
+
+    .endscreen-container {
+        width: 100%;
+    }
+
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    .startscreen {
+        height: 100vh;
+    }
+
+    .endscreen-container {
+        height: 100vh;
+    }
+
+    canvas {
+        height: 100%;
+    }
+}
+
+@media (max-width: 1370px) {
+    .mobile-buttons-container {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        padding: 0 16px 0 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .button-image-right-left-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .button-image-mobile {
+        border-radius: 50px;
+        padding: 8px;
+        outline: none;
+        border: 2px solid #fff;
+        background: #d2af00;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.5;
+    }
+
+    .image-touch-key {
+        height: 100%;
+        width: 100%;
+        filter: invert(1);
+        object-fit: contain;
+    }
+
+    .button-mobile-jump-bottle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .button-mobile-jump {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #d2af00;
+        outline: none;
+        border: 2px solid #fff;
+        height: 48px;
+        width: 48px;
+        padding: 8px;
+        border-radius: 50px;
+        color: #fff;
+        font-weight: bold;
+        opacity: 0.5;
+    }
+
+    .up-icon {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        filter: invert(1);
+    }
+
+    .button-mobile-bottle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #d2af00;
+        outline: none;
+        border: 2px solid #fff;
+        height: 48px;
+        width: 48px;
+        padding: 8px;
+        border-radius: 50px;
+        color: #fff;
+        font-weight: bold;
+        opacity: 0.5;
+    }
+
+    .bottle-icon {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        filter: invert(1);
+    }
+
+}
+
+@media (max-width: 768px) {
+    .button-image-mobile {
+        width: 40px;
+        height: 40px;
+        padding: 4px;
+    }
+
+    .button-mobile-jump {
+        width: 40px;
+        height: 40px;
+        padding: 4px;
+    }
+
+    .button-mobile-bottle {
+        width: 40px;
+        height: 40px;
+        padding: 4px;
+    }
+
+    .orizontal-screen-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100vh;
+        z-index: 999;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .orizontal-screen-title {
+        font-size: 32px;
+        font-weight: 100;
+        color: #fff;
+    }
+
+    .rotate-device-img {
+        width: 250px;
+        height: 250px;
+        animation-name: rotation;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0);
+            opacity: 0;
+        }
+
+        25% {
+            opacity: 0.5;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            transform: rotate(90deg);
+            opacity: 0.3;
+        }
+    }
+}
+
+@media (min-width: 1051px) and (max-width: 1370px) {
+    .fullScreen-game-buttons {
+        height: 80px;
+        width: 80px;
+    }
+
+    .fullscreen-advice {
+        font-size: 48px;
+    }
+}
+
+@media (min-width: 431px) and (max-width: 1050px) {
+    .fullScreenButton {
+        height: 40px;
+        width: 40px;
+    }
+
+    .fullScreenIcons {
+        height: 24px;
+        width: 24px;
+    }
+}
+
+@media (max-width: 430px) {
+    .startGame-button {
+        font-size: 20px;
+    }
+
+    .restart-game {
+        font-size: 20px;
+    }
+
+    .fullScreenButton {
+        height: 30px;
+        width: 30px;
+    }
+
+    .fullScreenIcons {
+        height: 16px;
+        width: 16px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .mobile-game-explanation-container {
+        display: flex;
+        /* flex-direction: column; */
+        gap: 16px;
+    }
+
+    .mobile-game-explanation-image-and-text-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: #fff;
+        font-size: 24px;
+        border: 1px solid #fff;
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .image-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        border-radius: 50px;
+        height: 48px;
+        width: 48px;
+        border: 2px solid #fff;
+        background: #d2af00;
+    }
+
+    .mobile-game-explanation-image {
+        height: 100%;
+        width: 100%;
+        filter: invert(1);
+        object-fit: contain
+    }
+
+
+    .mobile-d-none {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-game-explanation-container {
+        flex-direction: column;
+    }
+
+    .mission {
+        font-size: 20px;
+    }
+
+    .image-wrapper {
+        height: 32px;
+        width: 32px;
+        padding: 4px;
+    }
+}
+
+@media (min-width: 1370px) {
+    .mobile-buttons-container {
+        display: none;
+    }
+}
+
+@media (min-width: 1051px) {
+    .desktop-d-none {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .orizontal-screen-overlay {
+        display: none;
+    }
+}

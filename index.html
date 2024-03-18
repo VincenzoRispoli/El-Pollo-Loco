@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Pollo Loco</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaQueries.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+
+<body onload="init()">
+    <h1 class="game-title mobile-d-none">El Pollo Loco</h1>
+
+    <div id="startscreen" class="startscreen">
+        <button onclick="startGame()" class="startGame-button">Start Game</button>
+        <button onclick="gameExplanationPopUp()" class="startGame-button">Game Explanation</button>
+    </div>
+
+
+    <div id="endscreen-container" class="endscreen-container d-none">
+        <div id="endscreen-you-lost" class="endscreen-you-lost d-none">
+            <button onclick="restartGame()" class="restart-game" class="restart-game">Retry</button>
+        </div>
+        <div id="endscreen-game-over" class="endscreen-game-over d-none">
+            <button onclick="restartGame()" class="restart-game">Restart Game</button>
+        </div>
+        <!-- buttons Resume, Pause, Music and Fullscreen -->
+        <div id="buttons-container" class="buttons-container">
+            <button id="pause-and-play-button" class="pause-and-play-button">
+                <img onclick="pauseGame()" id="icon-pause" class="icon-pause" src="assets/icons/pause.svg" alt="">
+                <img onclick="resumeGame()" id="icon-play" class="icon-play d-none" src="assets/icons/play.svg" alt="">
+            </button>
+            <button id="button-audio-container" onclick="muteMusic()" id="button-audio-container"
+                class="button-audio-container">
+                <img id="audio-icon" class="audio-icon" src="assets/icons/music.svg" alt="">
+            </button>
+            <button id="button-fullscreen-container" class="button-fullscreen-container">
+                <img onclick="fullScreen()" id="fullscreen-icon" class="fullscreen-icon" src="assets/icons/expand.svg"
+                    alt="">
+                <img onclick="fullScreenEscape(event)" ; id="compress-icon" class="compress-icon d-none"
+                    src="assets/icons/compress.svg" alt="">
+            </button>
+        </div>
+        <!------------------------>
+        <canvas id="canvas" height="480" width="720"></canvas>
+        <span id="new-bottles-advice-container" class="new-bottles-advice-container d-none">
+            <h2 id="new-bottles-advice" class="new-bottles-advice">Go to left for more bottles</h2>
+        </span>
+        <!-- Mobile Buttons  -->
+        <span id="mobile-buttons-container" class="mobile-buttons-container">
+            <span class="button-image-right-left-container">
+                <button id="arrow-left" class="button-image-mobile"><img class="image-touch-key"
+                        src="assets/icons/left.svg" alt=""></button>
+                <button id="arrow-right" class="button-image-mobile"><img class="image-touch-key"
+                        src="assets/icons/right.svg" alt=""></button>
+            </span>
+            <span class="button-mobile-jump-bottle-container">
+                <button id="jump" class="button-mobile-jump"><img class="up-icon" src="assets/icons/up.svg"
+                        alt=""></button>
+                <button id="bottle" class="button-mobile-bottle"><img class="bottle-icon" src="assets/icons/bottle.svg"
+                        alt=""></button>
+            </span>
+        </span>
+        <!-- End Mobile Buttons  -->
+    </div>
+
+    <!------------------------------------Game Explanation Section-------------------->
+    <div id="game-explanation-container" class="game-explanation-container translate-explanation-pop-up">
+        <div class="opacity">
+            <span onclick="hideGameExplanationPopUp()" class="cross-icon-container">
+                <svg class="cross-icon-btn" width="48" height="48" viewBox="0 0 24 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z"
+                        stroke="#d2af00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+            <section class="chracter-mission-and-game-buttons">
+                <div class="character-container">
+                    <img class="pepe" src="img/2_character_pepe/1_idle/idle/I-1.png" alt="">
+                    <p class="mission">My name is Pepe, also known as Pepe El Peligroso. My mission is to steal all the
+                        coins I find on
+                        the street. My enemies will stand in my way and the most fearsome, will be at the end of the
+                        street
+                    </p>
+
+                </div>
+                <!-- Desktop Game Explanation -->
+                <div id="buttons-game-container" class="buttons-game-container mobile-d-none">
+                    <p class="button-game">Arrow Left : Move to Left</p>
+                    <p class="button-game">Arrow Right : Move to Right</p>
+                    <p class="button-game">Space Key : Jump </p>
+                    <p class="button-game">D Key : Throw Bottles</p>
+                </div>
+                <!-- Mobile Game Explanation -->
+                <div id="mobile-game-explanation-container" class="mobile-game-explanation-container desktop-d-none">
+                    <div class="mobile-game-explanation-image-and-text-wrapper">
+                        <span class="image-wrapper">
+                            <img class="mobile-game-explanation-image" src="assets/icons/left.svg" alt="">
+                        </span>
+                        Move to Left
+                    </div>
+                    <div class="mobile-game-explanation-image-and-text-wrapper">
+                        <span class="image-wrapper">
+                            <img class="mobile-game-explanation-image" src="assets/icons/right.svg" alt="">
+                        </span>
+                        Move to Right
+                    </div>
+                    <div class="mobile-game-explanation-image-and-text-wrapper">
+                        <span class="image-wrapper">
+                            <img class="mobile-game-explanation-image" src="assets/icons/up.svg" alt="">
+                        </span>
+                        Jump
+                    </div>
+                    <div class="mobile-game-explanation-image-and-text-wrapper">
+                        <span class="image-wrapper">
+                            <img class="mobile-game-explanation-image" src="assets/icons/bottle.svg" alt="">
+                        </span>
+                        Throw Bottles
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!------------------------------------ End Game Explanation Section-------------------->
+
+    <div id="orizontal-screen-overlay" class="orizontal-screen-overlay">
+        <h2 class="orizontal-screen-title">Turn your device to play</h2>
+        <img class="rotate-device-img" src="assets/rotate-device.png" alt="">
+    </div>
+
+
+    <script src="./models/drawble-object.class.js"></script>
+    <script src="./models/movable-object.class.js"></script>
+    <script src="./models/world.class.js"></script>
+    <script src="./models/coins.class.js"></script>
+    <script src="./models/statusbarHealth.class.js"></script>
+    <script src="./models/statusbarCoins.class.js"></script>
+    <script src="./models/statusBarBottles.class.js"></script>
+    <script src="./models/statusbarEndBoss.class.js"></script>
+    <script src="./models/throwable-object.class.js"></script>
+    <script src="./models/character.class.js"></script>
+    <script src="./models/bottle.class.js"></script>
+    <script src="./models/background-objects.class.js"></script>
+    <script src="./models/chicken.class.js"></script>
+    <script src="./models/small-chicken.class.js"></script>
+    <script src="./models/cloud.class.js"></script>
+    <script src="./models/keyboard.class.js"></script>
+    <script src="./models/endBoss.class.js"></script>
+    <script src="./models/level.class.js"></script>
+    <script src="./levels/level1.js"></script>
+    <script src="./JS/game.js"></script>
+</body>
+
+</html>
