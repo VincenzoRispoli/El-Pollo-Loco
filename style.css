@@ -351,6 +351,44 @@ canvas {
     z-index: 999;
 }
 
+.bottles-and-coins-count-container {
+    position: absolute;
+    top: 30%;
+    left: 16px;
+}
+
+.bottles-count-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.bottles-count-title {
+    font-size: 32px;
+    color: #fff;
+}
+
+.coins-count-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.coins-count-title {
+    font-size: 32px;
+    color: #fff;
+}
+
+.bottles-count {
+    font-size: 32px;
+    color: #fff;
+}
+
+.coins-count {
+    font-size: 32px;
+    color: #fff;
+}
+
 .endscreen-you-lost {
     background-image: url('img/9_intro_outro_screens/game_over/oh no you lost!.png');
     background-position: center center;
