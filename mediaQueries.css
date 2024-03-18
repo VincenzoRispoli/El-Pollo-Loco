@@ -414,7 +414,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 666px) {
     .mobile-game-explanation-container {
         flex-direction: column;
     }
