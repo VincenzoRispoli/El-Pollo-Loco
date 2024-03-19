@@ -101,13 +101,24 @@ class World {
      */
     checkCollisonFromAbove() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && this.character.isAboveGround() &&
-                this.character.speedY < 0 && !enemy.enemyIsDead) {
+            if (this.isCollidingFromAbove(enemy)) {
+                console.log(enemy);
                 enemy.enemyIsDead = true;
                 enemy.HIT_SOUND.play();
                 this.character.jump();
             };
         });
+    }
+
+    /**
+     * This function checks whether the object, in this case the character, collides with an enemy from above, 
+     * in which case it returns a Boolean value of true.
+     * @param {Object} enemy - the enemy (Chicken or Small Chicken) with which the character collides
+     * @returns {Boolean} - a Boolean value of true or false
+     */
+    isCollidingFromAbove(enemy){
+        return this.character.isColliding(enemy) && this.character.isAboveGround() &&
+        this.character.speedY < 0 && !enemy.enemyIsDead && !this.character.isDead()
     }
 
     /**

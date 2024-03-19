@@ -65,8 +65,8 @@ function setHTML() {
  */
 function resetChickenProperties() {
     world.level.enemies.forEach((enemy) => {
-        if (enemy instanceof Chicken) {  // dato che world.level.enemies ha diversi nemici, tra cui chicken 
-            enemy.enemyIsDead = false;   // e smallchicken devo specificare su quale instanza specifica dell'oggetto voglio ripristinare le variabile al restart game
+        if (enemy instanceof Chicken) {
+            enemy.enemyIsDead = false;
             enemy.isCollided = false;
             enemy.x = 500 + Math.random() * 2000;
             enemy.y = 330;
@@ -188,12 +188,13 @@ function stopCharacter() {
  */
 function stopSmallChicken() {
     world.level.enemies.forEach((enemy) => {
-        enemy.theGameIsPaused = true;
-        enemy.acceleration = 0;
-        savedSmallChikSpeedY = enemy.speedY;
-        enemy.speedY = 0;
-
-    })
+        if (enemy instanceof SmallChicken) {
+            enemy.theGameIsPaused = true;
+            enemy.acceleration = 0;
+            savedSmallChikSpeedY = enemy.speedY;
+            enemy.speedY = 0;
+        }
+    });
 }
 
 /**
@@ -201,9 +202,11 @@ function stopSmallChicken() {
  */
 function resumeSmallChicken() {
     world.level.enemies.forEach((enemy) => {
-        enemy.theGameIsPaused = false;
-        enemy.acceleration = 3;
-        enemy.speedY = savedSmallChikSpeedY;
+        if (enemy instanceof SmallChicken) {
+            enemy.theGameIsPaused = false;
+            enemy.acceleration = 3;
+            enemy.speedY = savedSmallChikSpeedY;
+        }
     })
 }
 

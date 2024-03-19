@@ -51,9 +51,9 @@ class Chicken extends MovableObject {
      * @returns {void}
      */
     checkTheStateOfChicken() {
-        if (this.enemyIsDead && !this.theGameIsPaused && !world.character.isDead()) {
+        if (this.enemyIsDead && !this.theGameIsPaused) {
             this.loadImage('img/3_enemies_chicken/chicken_normal/2_dead/dead.png');
-            this.moveDown();
+            this.moveDown()
         } else if (!this.theGameIsPaused) {
             this.playAnimation(this.IMAGES_WALKING);
         }
