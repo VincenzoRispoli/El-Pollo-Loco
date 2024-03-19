@@ -1,4 +1,8 @@
-class StatusbarHealth extends DrawbleObject {
+/**
+ * This class is an instance of the DrawableObject class and represents the status bar of
+ * the Character's Health
+ */
+class StatusbarHealth extends DrawableObject {
     x = 0
     y = 0;
     width = 200;
@@ -15,6 +19,10 @@ class StatusbarHealth extends DrawbleObject {
 
     percentage = 100
 
+    /**
+     * The constructor of the StatusbarHealth class loads the statusbar images into the imageCache{} 
+     * object, then calls the setPercentage function
+     */
     constructor() {
         super();
         this.loadImages(this.STATUSBAR_HEALTH);
@@ -22,10 +30,11 @@ class StatusbarHealth extends DrawbleObject {
     }
 
     /**
-     * This function sets the current energy value of the object in question.
+     * @property {Function} setPercentage - This function sets the current energy value of the object in question.
      * As the energy value of the object in question decreases, 
      * an image of the health status bar is shown in the canvas with a shorter bar
      * @param {number} percentage - numerical value of the energy of an object
+     * @returns {void}
      */
     setPercentage(percentage) {
         this.percentage = percentage;
@@ -34,10 +43,10 @@ class StatusbarHealth extends DrawbleObject {
     }
 
     /**
-     * This function checks the current value of the percentage variable of the statusbarHealth 
+     * @property {Function} resolveImageIndex - This function checks the current value of the percentage variable of the statusbarHealth 
      * object by means of some conditions 
      * and returns a number from 0 to 5 if the value is equal to some number of a condition
-     * @returns - a numerical value from 0 to 5 depending on the verified condition
+     * @returns {number} - a numerical value from 0 to 5 depending on the verified condition
      */
     resolveImageIndex() {
         if (this.percentage == 100) {

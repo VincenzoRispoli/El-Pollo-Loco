@@ -44,7 +44,6 @@ let fullscreen;
 async function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-    console.log('My Character is', world.character);
     if (!restart) {
         pauseGame();
     }
@@ -228,7 +227,7 @@ function stopSmallChicken() {
 /**
  * This function resume the jump and gravity animation of Small Chicken when the game is resumed
  */
-function resumeSmallChicken(){
+function resumeSmallChicken() {
     world.level.enemies.forEach((enemy) => {
         enemy.theGameIsPaused = false;
         enemy.acceleration = 3;
@@ -254,130 +253,6 @@ function stopEnemyBossCoinBottle() {
         coin.theGameIsPaused = true;
     })
 }
-
-/**
- * This function sets the fullscreen of the game.
- * It sets the width and height of the canvas to 100 per cent so that it fills the 
- * entire screen, and enlarges the pause and play game, pause and play music and fullscreen buttons
- */
-function fullScreen() {
-    fullscreen = false;
-    let endscreen = document.getElementById('endscreen-container');
-    canvas.style.height = '100%';
-    canvas.style.width = '100%';
-    openFullscreen(endscreen);
-    document.getElementById('fullscreen-icon').classList.add('d-none');
-    document.getElementById('compress-icon').classList.remove('d-none');
-    biggerButtons();
-    biggerIcons();
-    biggerGameButtons();
-    document.getElementById('new-bottles-advice').classList.add('fullscreen-advice')
-}
-
-/**
- * This function enlarges the pause and play game, pause and play music and fullscrreen buttons
- */
-function biggerButtons() {
-    document.getElementById('pause-and-play-button').classList.add('fullScreenButton');
-    document.getElementById('button-audio-container').classList.add('fullScreenButton');
-    document.getElementById('button-fullscreen-container').classList.add('fullScreenButton');
-}
-
-/**
- * This function enlarges the pause and play game, pause and play music and fullscreen icons
- */
-function biggerIcons() {
-    document.getElementById('icon-pause').classList.add('fullScreenIcons');
-    document.getElementById('icon-play').classList.add('fullScreenIcons');
-    document.getElementById('audio-icon').classList.add('fullScreenIcons');
-    document.getElementById('fullscreen-icon').classList.add('fullScreenIcons');
-    document.getElementById('compress-icon').classList.add('fullScreenIcons');
-}
-
-/**
- * 
- * @param {object} elem - the Object / HTML element on which you wish to set the fullscreen
- */
-function openFullscreen(elem) {
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-    } else if (elem.webkitRequestFullscreen) { /* Safari */
-        elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE11 */
-        elem.msRequestFullscreen();
-    };
-}
-
-/**
- * This function allows you to exit from the full screen mode
- * @param {object} event - the event whose propagation we want to stop
- */
-function fullScreenEscape(event) {
-    document.exitFullscreen();
-    document.getElementById('fullscreen-icon').classList.remove('d-none');
-    document.getElementById('compress-icon').classList.add('d-none');
-    canvas.style.height = '';
-    canvas.style.width = '';
-    shrinkButtons();
-    shrinkIcons();
-    schrinkGameButton();
-    document.getElementById('new-bottles-advice').classList.remove('fullscreen-advice')
-    event.stopPropagation();
-}
-
-/**
- * This function shrinks the the pause and play game, pause and play music and fullscreen buttons 
- * when the user exits full screen mode
- */
-function shrinkButtons() {
-    document.getElementById('pause-and-play-button').classList.remove('fullScreenButton');
-    document.getElementById('button-audio-container').classList.remove('fullScreenButton');
-    document.getElementById('button-fullscreen-container').classList.remove('fullScreenButton')
-}
-
-/**
- * This function shrinks the the pause and play game, pause and play music and fullscreen icons 
- * when the user exits full screen mode
- */
-function shrinkIcons() {
-    document.getElementById('icon-pause').classList.remove('fullScreenIcons');
-    document.getElementById('icon-play').classList.remove('fullScreenIcons');
-    document.getElementById('audio-icon').classList.remove('fullScreenIcons');
-    document.getElementById('fullscreen-icon').classList.remove('fullScreenIcons');
-    document.getElementById('compress-icon').classList.remove('fullScreenIcons');
-}
-
-/**
- * This function enlarges the game buttons when the user is in full screen mode
- */
-function biggerGameButtons() {
-    document.getElementById('arrow-left').classList.add('fullScreen-game-buttons');
-    document.getElementById('arrow-right').classList.add('fullScreen-game-buttons');
-    document.getElementById('jump').classList.add('fullScreen-game-buttons');
-    document.getElementById('bottle').classList.add('fullScreen-game-buttons');
-}
-
-/**
- * This function shrinks the game buttons when the user escape from the full screen mode
- */
-function schrinkGameButton() {
-    document.getElementById('arrow-left').classList.remove('fullScreen-game-buttons');
-    document.getElementById('arrow-right').classList.remove('fullScreen-game-buttons');
-    document.getElementById('jump').classList.remove('fullScreen-game-buttons');
-    document.getElementById('bottle').classList.remove('fullScreen-game-buttons');
-}
-/**
- * This event listener shrinks the the pause and play game, pause and play music and fullscreen icons 
- * when the user exits full screen mode with the "Esc" Key
- */
-document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) {
-        document.getElementById('fullscreen-icon').classList.remove('d-none');
-        document.getElementById('compress-icon').classList.add('d-none');
-        shrinkButtons();
-        shrinkIcons();
-    }
-})
 
 /**
  * This function mute the music when the user clicks on the music button
@@ -417,100 +292,6 @@ function hideGameExplanationPopUp() {
 }
 
 /**
- * This function is checked if the screen of a mobile device has changed orientation
- */
-window.addEventListener('orientationchange', () => {
-    if (window.orientation == 90) {
-        document.getElementById('orizontal-screen-overlay').style.display = 'none';
-    } else if (window.orientation == 0) {
-        document.getElementById('orizontal-screen-overlay').style.display = '';
-    }
-})
-
-/**
- * This event listener checks if one of these keys is pressed
- */
-window.addEventListener('keydown', (e) => {
-    if (e.keyCode == 38) {
-        world.keyboard.UP = true;
-    } else if (e.keyCode == 32) {
-        e.preventDefault();
-        world.keyboard.SPACE = true;
-    } else if (e.keyCode == 39) {
-        world.keyboard.RIGHT = true;
-    } else if (e.keyCode == 40) {
-        world.keyboard.DOWN = true;
-    } else if (e.keyCode == 37) {
-        world.keyboard.LEFT = true;
-    } else if (e.keyCode == 68) {
-        world.keyboard.D = true;
-    }
-})
-
-/**
- * /**
- * This event listener checks if one of these keys is released
- */
-window.addEventListener('keyup', (e) => {
-    if (e.keyCode == 38) {
-        world.keyboard.UP = false;
-    } else if (e.keyCode == 39) {
-        world.keyboard.RIGHT = false;
-    } else if (e.keyCode == 40) {
-        world.keyboard.DOWN = false;
-    } else if (e.keyCode == 37) {
-        world.keyboard.LEFT = false;
-    } else if (e.keyCode == 32) {
-        world.keyboard.SPACE = false;
-    } else if (e.keyCode == 68) {
-        world.keyboard.D = false;
-    }
-})
-
-/**
- * This event listener checks if one of these keys is pressed or released in the mobile screens
- */
-document.getElementById('arrow-left').addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    world.keyboard.LEFT = true;
-});
-
-document.getElementById('arrow-left').addEventListener('touchend', (e) => {
-    e.preventDefault();
-    world.keyboard.LEFT = false;
-})
-
-document.getElementById('arrow-right').addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    world.keyboard.RIGHT = true;
-})
-
-document.getElementById('arrow-right').addEventListener('touchend', (e) => {
-    e.preventDefault();
-    world.keyboard.RIGHT = false;
-})
-
-document.getElementById('jump').addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    world.keyboard.SPACE = true;
-});
-
-document.getElementById('jump').addEventListener('touchend', (e) => {
-    e.preventDefault();
-    world.keyboard.SPACE = false;
-})
-
-document.getElementById('bottle').addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    world.keyboard.D = true;
-});
-
-document.getElementById('bottle').addEventListener('touchend', (e) => {
-    e.preventDefault();
-    world.keyboard.D = false;
-})
-
-/**
  * This funtion stop the propagation of a click event
  * @param {object} event - the event whose propagation we want to stop
  */
@@ -527,13 +308,13 @@ function doNotPause(event) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#biggerButtons">biggerButtons</a></li><li><a href="global.html#biggerGameButtons">biggerGameButtons</a></li><li><a href="global.html#biggerIcons">biggerIcons</a></li><li><a href="global.html#doNotPause">doNotPause</a></li><li><a href="global.html#fullScreen">fullScreen</a></li><li><a href="global.html#fullScreenEscape">fullScreenEscape</a></li><li><a href="global.html#gameExplanationPopUp">gameExplanationPopUp</a></li><li><a href="global.html#hideGameExplanationPopUp">hideGameExplanationPopUp</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#muteMusic">muteMusic</a></li><li><a href="global.html#openFullscreen">openFullscreen</a></li><li><a href="global.html#pauseGame">pauseGame</a></li><li><a href="global.html#resetChickenProperties">resetChickenProperties</a></li><li><a href="global.html#resetCloudsProperties">resetCloudsProperties</a></li><li><a href="global.html#resetEndbossProperties">resetEndbossProperties</a></li><li><a href="global.html#resetSmallChickenProperties">resetSmallChickenProperties</a></li><li><a href="global.html#restartGame">restartGame</a></li><li><a href="global.html#restartSong">restartSong</a></li><li><a href="global.html#resumeCharacterAndEndboss">resumeCharacterAndEndboss</a></li><li><a href="global.html#resumeEnemiesCloudBottleCoin">resumeEnemiesCloudBottleCoin</a></li><li><a href="global.html#resumeGame">resumeGame</a></li><li><a href="global.html#resumeSmallChicken">resumeSmallChicken</a></li><li><a href="global.html#schrinkGameButton">schrinkGameButton</a></li><li><a href="global.html#setHTML">setHTML</a></li><li><a href="global.html#shrinkButtons">shrinkButtons</a></li><li><a href="global.html#shrinkIcons">shrinkIcons</a></li><li><a href="global.html#startGame">startGame</a></li><li><a href="global.html#stopCharacter">stopCharacter</a></li><li><a href="global.html#stopEnemyBossCoinBottle">stopEnemyBossCoinBottle</a></li><li><a href="global.html#stopSmallChicken">stopSmallChicken</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#biggerButtons">biggerButtons</a></li><li><a href="global.html#biggerGameButtons">biggerGameButtons</a></li><li><a href="global.html#biggerIcons">biggerIcons</a></li><li><a href="global.html#biggerTitlesBottlesCoinsCount">biggerTitlesBottlesCoinsCount</a></li><li><a href="global.html#doNotPause">doNotPause</a></li><li><a href="global.html#fullScreen">fullScreen</a></li><li><a href="global.html#fullScreenEscape">fullScreenEscape</a></li><li><a href="global.html#gameExplanationPopUp">gameExplanationPopUp</a></li><li><a href="global.html#hideGameExplanationPopUp">hideGameExplanationPopUp</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#muteMusic">muteMusic</a></li><li><a href="global.html#openFullscreen">openFullscreen</a></li><li><a href="global.html#pauseGame">pauseGame</a></li><li><a href="global.html#resetChickenProperties">resetChickenProperties</a></li><li><a href="global.html#resetCloudsProperties">resetCloudsProperties</a></li><li><a href="global.html#resetEndbossProperties">resetEndbossProperties</a></li><li><a href="global.html#resetSmallChickenProperties">resetSmallChickenProperties</a></li><li><a href="global.html#restartGame">restartGame</a></li><li><a href="global.html#restartSong">restartSong</a></li><li><a href="global.html#resumeCharacterAndEndboss">resumeCharacterAndEndboss</a></li><li><a href="global.html#resumeEnemiesCloudBottleCoin">resumeEnemiesCloudBottleCoin</a></li><li><a href="global.html#resumeGame">resumeGame</a></li><li><a href="global.html#resumeSmallChicken">resumeSmallChicken</a></li><li><a href="global.html#schrinkGameButton">schrinkGameButton</a></li><li><a href="global.html#setHTML">setHTML</a></li><li><a href="global.html#shrinkButtons">shrinkButtons</a></li><li><a href="global.html#shrinkIcons">shrinkIcons</a></li><li><a href="global.html#shrinkTitlesBottlesCoinsCount">shrinkTitlesBottlesCoinsCount</a></li><li><a href="global.html#startGame">startGame</a></li><li><a href="global.html#stopCharacter">stopCharacter</a></li><li><a href="global.html#stopEnemyBossCoinBottle">stopEnemyBossCoinBottle</a></li><li><a href="global.html#stopSmallChicken">stopSmallChicken</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 18 2024 17:13:47 GMT+0100 (Mitteleuropäische Normalzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 18 2024 23:29:00 GMT+0100 (Mitteleuropäische Normalzeit)
 </footer>
 
 <script> prettyPrint(); </script>

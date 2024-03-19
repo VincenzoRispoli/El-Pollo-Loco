@@ -1,4 +1,10 @@
-class MovableObject extends DrawbleObject {
+/**
+ * This class is an instance of the DrawableObject class, from which it inherits 
+ * the properties and methods for drawing graphics in the canvas context. 
+ * This class will serve as a model for the creation of movable objects, 
+ * such as the character, clouds, enemies and the final boss
+ */
+class MovableObject extends DrawableObject {
     speed;
     speedY = 0;
     acceleration = 3.5;
@@ -20,7 +26,10 @@ class MovableObject extends DrawbleObject {
     }
 
     /**
-     * This function applies the gravitational force to the object in question when it is in the air.
+     * @property {Function} applyGravity - 
+     * This function applies the gravitational force to the object 
+     * in question when it is in the air.
+     * @returns {void}
      */
     applyGravity() {
         setInterval(() => {
@@ -32,8 +41,8 @@ class MovableObject extends DrawbleObject {
     }
 
     /**
-     * This function checks whether the object in question is in the air
-     * @returns - a boolean value truthy or falsy
+     * @property {Function} isAboveGround - This function checks whether the object in question is in the air
+     * @returns {Boolean} - a boolean value truthy or falsy
      */
     isAboveGround() {
         if (this instanceof ThrowableObject) {
@@ -46,9 +55,10 @@ class MovableObject extends DrawbleObject {
     }
 
     /**
-     * This function check the collision between the Character and other movable objects within the canvas
+     * @property {Function} isColliding - This function check the collision between the Character 
+     * and other movable objects within the canvas
      * @param {object} mo - the movable object with which the Character or Bottle collides
-     * @returns {boolean} - a boolean value of true if the object in question collides with a movable object, vertically and horizontally
+     * @returns {Boolean} - a boolean value of true if the object in question collides with a movable object, vertically and horizontally
      */
     isColliding(mo) {
         return this.checkCollisionInBothDimensions(mo);
@@ -72,9 +82,10 @@ class MovableObject extends DrawbleObject {
     }
 
     /**
-     * This function checks whether the object in question has been hit or collided with something. 
+     * @property {Function} hit - This function checks whether the object in question has been hit or collided with something. 
      * In this case the object's energy is decreased by 20% for each hit. 
-     * The exact time in which the collision occurred is then saved in the lastHit variable
+     * The exact time in which the collision occurred is then saved in the lastHit variable.
+     * @returns {void}
      */
     hit() {
         this.energy -= 20;
@@ -86,16 +97,16 @@ class MovableObject extends DrawbleObject {
     }
 
     /**
-     * This variable checks whether the object in question has been knocked down
-     * @returns - the numerical value of the object's energy
+     * @property {Function} hit - This variable checks whether the object in question has been knocked down
+     * @returns {Boolean} - the numerical value of the object's energy
      */
     isDead() {
         return this.energy == 0;
     }
 
     /**
-     * This function checks whether the time elapsed since the last collision is less than one second
-     * @returns - if the passed time is less than one second, the condition is true
+     * @property {Function} isHurt - This function checks whether the time elapsed since the last collision is less than one second
+     * @returns {Boolean} - if the passed time is less than one second, the condition is true
      */
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit; // difference in milliseconds;
@@ -104,8 +115,8 @@ class MovableObject extends DrawbleObject {
     }
 
     /**
-     * This function controls the idle of the Character
-     * @returns - true, if the passed time is between 20 and 40 seconds
+     * @property {Function} isIdle This function controls the idle of the Character
+     * @returns {Boolean} - true, if the passed time is between 20 and 40 seconds
      */
     isIdle() {
         let timepassed = new Date().getTime() - this.lastMovement;
@@ -114,8 +125,8 @@ class MovableObject extends DrawbleObject {
     }
 
     /**
-     * This function controls the long idle of the Character
-     * @returns - true, if the passed time is more than or equal to 41 seconds
+     * @property {Function} isLongIdle - This function controls the long idle of the Character
+     * @returns {Boolean} - true, if the passed time is more than or equal to 41 seconds
      */
     isLongIdle() {
         let timepassed = new Date().getTime() - this.lastMovement;
@@ -124,10 +135,11 @@ class MovableObject extends DrawbleObject {
     }
 
     /**
-     * 
-     * This function takes an array of images as an argument. This array of images is iterated using the modulo 
-     * operator ( % ) and each iterated image is shown on the screen, giving life to an animation
+     * @property {Function} playAnimation - This function takes an array of images as an argument. 
+     * This array of images is iterated using the modulo operator ( % ) and each iterated 
+     * image is shown on the screen, giving life to an animation.
      * @param {array} images - the array of images that we pass as arguments
+     * @returns {void}
      */
     playAnimation(images) {
         let i = this.currentImage % images.length
@@ -137,29 +149,33 @@ class MovableObject extends DrawbleObject {
     }
 
     /**
-     * This function makes the object in question move to the left
+     * @property {Function} moveLeft - This function makes the object in question move to the left
+     * @returns {void}
      */
     moveLeft() {
         this.x -= this.speed;
     }
 
      /**
-     * This function makes the object in question move to the right
+     * @property {Function} moveRight - This function makes the object in question move to the right
+     * @returns {void}
      */
     moveRight() {
         this.x += this.speed;
     }
 
      /**
-     * This function makes the object in question move to down
+     * @property {Function} moveDown - This function makes the object in question move to down
+     * @returns {void}
      */
     moveDown() {
         this.y += this.speedY
     }
 
      /**
-     * Tthis function allows the object in question to jump by 40 pixels if the object in question 
-     * is not above ground, else by 20 pixels if it is above ground
+     * @property {Function} jump - This function allows the object in question to jump by 40 pixels if the object in question 
+     * is not above ground, else by 20 pixels if it is above ground.
+     * @returns {void}
      */
     jump() {
         if (this instanceof Character && this.isAboveGround()) {

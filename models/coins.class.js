@@ -1,3 +1,6 @@
+/**
+ * This class is an instance of the MovableObject class and represents the Coins object.
+ */
 class Coins extends MovableObject {
 
     y = 100 + Math.random() * 50;
@@ -21,6 +24,13 @@ class Coins extends MovableObject {
     }
 
 
+    /**
+     * The constructor of the Coins class loads the single image and the array of images 
+     * for the animation. Then the animate() function is called for the various animations, 
+     * and finally the playSound() function is called, which contains a sound effect, which is only 
+     * activated when a coin is picked up
+     * 
+     */
     constructor() {
         super();
         this.loadImage(this.IMAGES_COINS[0]);
@@ -30,7 +40,8 @@ class Coins extends MovableObject {
     }
 
     /**
-     * This function play the animation of this Object
+     * @property {Function} animate - This function play the animation of this Object
+     * @returns {void} 
      */
     animate() {
         setInterval(() => {
@@ -40,11 +51,13 @@ class Coins extends MovableObject {
         }, 200)
     }
     /**
-     * This function plays the sound of coins when one of them is taken by the Character
+     * @property {Function} playCoinSound This function plays the sound of coins when one of them is taken 
+     * by the Character.
+     * @returns {void} 
      */
     playCoinSound() {
         if (this.isEarned) {
-            this.COIN_SOUND.play()
+            this.COIN_SOUND.play();
         }
     }
 }

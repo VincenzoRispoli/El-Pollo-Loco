@@ -1,3 +1,6 @@
+/**
+ * This class is an extension of the MovableObject class and represents the Character object.
+ */
 class Character extends MovableObject {
     x = 100;
     y = 40;
@@ -81,6 +84,13 @@ class Character extends MovableObject {
     JUMPING_AUDIO = new Audio('assets/audio/voice_jumping.mp3');
     SOUND_FAILURE = new Audio('assets/audio/wahwah.mp3');
 
+    /**
+    * The constructor of the Charcter class loads the initial image and the 
+    * images of the alert, walk, wounding and death animations.
+    * Next, the applyGravity() function is called to simulate the force of gravity when the Character jumps.
+    * Then the animate() function is called to start the various animations and finally 
+    * the youLost() function, which will only be activated if the Character has been defeated.
+    */
     constructor() {
         super();
         this.loadImage(this.IMAGES_JUMPING[0]);
@@ -99,7 +109,8 @@ class Character extends MovableObject {
     }
 
     /**
-     * This function play the animation of the Character
+     * @property {Function} animate - This function play the animation of the Character
+     * @returns {void}
      */
     animate() {
         setInterval(() => {
@@ -116,7 +127,8 @@ class Character extends MovableObject {
     }
 
     /**
-     * This function check the Character's movement
+     * @property {Function} checkCharacterMovements - This function check the Character's movement.
+     * @returns {void}
      */
     checkCharacterMovements() {
         if (this.canMoveRight()) {
@@ -130,7 +142,9 @@ class Character extends MovableObject {
     }
 
     /**
-     * This function check the position and the state of the Character. 
+     * @property {Function} checkThePositioAndStateCharacter - This function check the position and the state of 
+     * the Character. 
+     * @returns {void}
      */
     checkThePositioAndStateCharacter() {
         if (this.isDead() && !this.theGameIsPaused) {
@@ -148,9 +162,10 @@ class Character extends MovableObject {
     }
 
     /**
-     * This function check the Character idle;
+     * @property {Function} checkTheCharacterIdle - This function check the Character idle;
      * If the Character's inactivity lasts between 20 and 40 seconds, the idle animations function will be called.
      * If the Character's inactivity is longer than 40 seconds, the long idle animations function will be called.
+     * @returns {void}
      */
     checkTheCharacterIdle() {
         if (this.isIdle() && !this.theGameIsPaused) {
@@ -161,24 +176,27 @@ class Character extends MovableObject {
     }
 
     /**
-     * This function shows the "You Lost" endscreen overlay
+     * @property {Function} youLost - This function shows the "You Lost" endscreen overlay.
+     * @returns {void}
      */
     youLost() {
         document.getElementById('endscreen-you-lost').classList.remove('d-none');
     }
 
     /**
-     * this function allows the character to move to the right if the condition is true. 
+     * @property {Function} canMoveRight - This function allows the character to move to the right if the 
+     * condition is true. 
      * That is, if the game is not paused, if the key Arrow-Right of the keyboard is pressed and if the x 
      * position of the character does not exceed the value of the level_end_x variable
-     * @returns - a value of true, if the condition is true.
+     * @returns {Boolean} - a boolean value of true or false
      */
     canMoveRight() {
         return !this.theGameIsPaused && this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x
     }
 
     /**
-     * This function makes the character move to the right
+     * @property {Function} moveRight  - This function makes the character move to the right.
+     * @returns {void}
      */
     moveRight() {
         super.moveRight();
@@ -187,17 +205,18 @@ class Character extends MovableObject {
     }
 
     /**
-     * This function returns a true value if the Arrow-Left key of the keyboard is pressed, 
+     * @property {Function} canMoveLeft - This function returns a true value if the Arrow-Left key of the keyboard is pressed, 
      * if the character has not exceeded the maximum limit of pixels to the left and
      * the game is not paused
-     * @returns - a value of true, if the condition is true.
+     * @returns {Boolean} - a boolean value of true or false
      */
     canMoveLeft() {
         return this.world.keyboard.LEFT && this.x > 0 && !this.theGameIsPaused
     }
 
     /**
-     * This function allows the object in question to move to the left
+     * @property {Function} moveLeft - This function allows the object in question to move to the left.
+     * @returns {void}
      */
     moveLeft() {
         super.moveLeft();
@@ -206,18 +225,19 @@ class Character extends MovableObject {
     }
 
     /**
-     * This function returns a true value if the SPACE key is pressed, 
+     * @property {Function} canJump - This function returns a true value if the SPACE key is pressed, 
      * if the game is not paused and if the character is not already in the air
-     * @returns - a value of true, if the condition is true.
+     * @returns {Boolean} - a boolean value of true or false.
      */
     canJump() {
         return this.world.keyboard.SPACE && !this.isAboveGround() && !this.theGameIsPaused
     }
 
     /**
-     * This function allows the object in question to jump.
+     * @property {Function} jump This function allows the object in question to jump.
      * The jump sound variable is then activated and finally the exact 
-     * time from the moment of the jump is detected
+     * time from the moment of the jump is detected.
+     * @returns {void}
      */
     jump() {
         super.jump();
@@ -226,9 +246,10 @@ class Character extends MovableObject {
     }
 
     /**
-     * This function is activated when the character's energy is equal to 0. 
+     * @property {Function} gameOver - This function is activated when the character's energy is equal to 0. 
      * Death animations are activated and then the moveDown() function 
-     * is activated which makes the character jump downwards
+     * is activated which makes the character jump downwards.
+     * @returns {void}
      */
     gameOver() {
         this.playAnimation(this.IMAGES_DEAD);
@@ -239,9 +260,9 @@ class Character extends MovableObject {
     }
 
     /**
-     * This function returns a Boolean value of true if the game is not paused and if either the Arrow-Right 
+     * @property {Function} isWalking This function returns a Boolean value of true if the game is not paused and if either the Arrow-Right 
      * key or the Arrow-Left key on the keyboard is pressed
-     * @returns a value of true if the condition is true
+     * @returns {Boolean} - a boolean value of true or false.
      */
     isWalking() {
         return this.world.keyboard.RIGHT || this.world.keyboard.LEFT && !this.theGameIsPaused

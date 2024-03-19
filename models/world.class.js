@@ -1,3 +1,6 @@
+/**
+ * This class represents the world where all objects and their animations are represented
+ */
 class World {
     character = new Character();  // new Image() crea il tag HTML <img>
     statusbarHealth = new StatusbarHealth();
@@ -7,14 +10,24 @@ class World {
     coins = [new Coins(), new Coins(), new Coins(), new Coins(), new Coins()];
     bottles = [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()]
     throwableObjects = [];
+    endBoss = new EndBoss();
     level = level1;
     ctx;
     canvas;
     keyboard;
     camera_x = 0;
-    endBoss = new EndBoss();
     gameIsFinish = false
 
+    /**
+     * This constructor of the World class takes as parameters the canvas, 
+     * which will be used to call up the 2D context for drawing graphics and animations. 
+     * Then it takes the keyboard object as a parameter and assigns it to the keyboard char, 
+     * which will be used for the game commands. 
+     * It then calls the draw() function to draw the elements within the context and the run() 
+     * function to control events within the game
+     * @param {object} canvas - the HTML element for the depiction of graphics and animations
+     * @param {object} keyboard - the object containing the game commands
+     */
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -29,8 +42,10 @@ class World {
     }
 
     /**
-     * This function monitors events during the game, such as collisions between Character and enemies, 
-     * between bottles and enemies, checks if enemies have been knocked down or if Character has been knocked down
+     * @property {Function} run - This function monitors events during the game, such as collisions between 
+     * Character and enemies, between bottles and enemies, checks if enemies have been knocked down or if
+     * Character has been knocked down
+     * @return {void}
      */
     run() {
         setInterval(() => {
@@ -54,8 +69,9 @@ class World {
     }
 
     /**
-     * This function controls the collision between Character Pepe and enemies.
+     * @property {Function} checkCollision - This function controls the collision between Character Pepe and enemies.
      * In this case, the hit() function will be activated, which will reduce the Character's energy by 20% per hit
+     * @return {void}
      */
     checkCollision() {
         this.level.enemies.forEach((enemy) => {
@@ -67,8 +83,9 @@ class World {
     }
 
     /**
-     * This function instead counters the collision between Character Pepe and the final boss.
+     * @property {Function} checkCollisionCharBoss - This function check the collision between Character Pepe and the final boss.
      * In this case, the hit() function will be activated, which will reduce the Character's energy by 20% per hit
+     * @return {void}
      */
     checkCollisionCharBoss() {
         if (this.character.isColliding(this.endBoss) && !this.endBoss.isDead()) {
@@ -78,7 +95,9 @@ class World {
     }
 
     /**
-     * This function checks if a top-down collision occurs on an enemy. In such a case the enemy is knocked down
+     * @property {Function} checkCollisonFromAbove - function checks if a top-down collision occurs on an enemy. 
+     * In such a case the enemy is knocked down
+     * @return {void}
      */
     checkCollisonFromAbove() {
         this.level.enemies.forEach((enemy) => {
@@ -92,10 +111,11 @@ class World {
     }
 
     /**
-     * This function controls the collision between Character Pepe and coins.
+     * @property {Function} checkCollisionCoins - This function controls the collision between Character Pepe and coins.
      * In this case the statusCoins variable contained within the statusbarCoins class will be increased 
      * by +1 and a longer coin progress bar will be displayed. 
      * Next, the coin sound function is activated and finally the current coin is removed via the splice method
+     * @return {void}
      */
     checkCollisionCoins() {
         for (let i = 0; i < this.coins.length; i++) {
@@ -111,10 +131,11 @@ class World {
     }
 
     /**
-     * This function controls the collision between the Character Pepe and the bottles. In such case
+     * @property {Function} checkCollisionCharacterBottles This function controls the collision between the Character Pepe and the bottles. In such case
      * the current bottle element is removed via the splice method
      * the statusBottles variable is incremented by
      * +1 to show on screen the image with the longest progress bar
+     * @returns {void}
      */
     checkCollisionCharacterBottles() {
         for (let i = 0; i < this.bottles.length; i++) {
@@ -130,10 +151,11 @@ class World {
     }
 
     /**
-     * This variable controls whether the Character is dead. In this case the functions within the Character 
+     * @property {Function} checkiIfCharacterIsDead - variable controls whether the Character is dead. In this case the functions within the Character 
      * class are called, for the animation for the sound and after 3 seconds the function youlost() 
      * is called which causes an overlay with the sign "You Lost" to appear and finally all intervals
-     *  are stopped with the function clearInterval()
+     *  are stopped with the function clearInterval();
+     * @returns {void}
      */
     checkiIfCharacterIsDead() {
         if (this.character.isDead()) {
@@ -147,10 +169,11 @@ class World {
     }
 
     /**
-    * This variable controls whether the End Boss is dead. In this case the functions within the End Boss 
+    * @property {Function} checkIfBossIsDead - This variable controls whether the End Boss is dead. In this case the functions within the End Boss 
      * class are called, for the animation for the sound and after 3 seconds the function gameOver()
      * is called which causes an overlay with the sign "Game Over" to appear and finally all intervals
-     *  are stopped with the function clearInterval()
+     *  are stopped with the function clearInterval();
+     * @returns {void}
      */
     checkIfBossIsDead() {
         if (this.endBoss.isDead()) {
@@ -163,9 +186,9 @@ class World {
     }
 
     /**
-     * This function takes care of generating new bottles, for a maximum number of 2, when the bottle array is 0. 
+     *  @property {Function} generateNewBottle - This function takes care of generating new bottles, for a maximum number of 2, when the bottle array is 0. 
      * That is, when the Character has taken all the bottles, 3 more appear.
-     * 
+     * @returns {void}
      */
     generateNewBottle() {
         if (this.statusbarBottles.statusBottles == 0 && this.bottles.length <= 2) {
@@ -180,15 +203,17 @@ class World {
     }
 
     /**
-     * This function hide the new bottles advice after 3 seconds
+     * @property {Function} hideBottleAdvice - This function hide the new bottles advice after 3 seconds
+     * @returns {void}
      */
     hideBottleAdvice() {
         document.getElementById('new-bottles-advice-container').classList.add('d-none');
     }
 
     /**
-     * This function controls the collision between bottles and enemies. After 180 milliseconds, 
+     * @property {Function} checkCollisionBottlesEnemy - This function controls the collision between bottles and enemies. After 180 milliseconds, 
      * the collided bottle is removed via the splice method
+     * @returns {void}
      */
     checkCollisionBottlesEnemy() {
         for (let i = 0; i < this.level.enemies.length; i++) {
@@ -206,17 +231,19 @@ class World {
     }
 
     /**
-     * This function takes the current throwable object as a parameter, and removes it via the splice method
+     * @property {Function} deleteBottleFromCtx - This function takes the current throwable object as a parameter, and removes it via the splice method
      * @param {object} bottle - The throwable object being thrown at enemies
+     * @returns {void}
      */
     deleteBottleFromCtx(bottle) {
         this.throwableObjects.splice(bottle, 1)
     }
 
     /**
-     * This function controls the collision between bottles the final boss. If the bottle hits the boss, the hit() 
+     * @property {Function} checkCollisionBottleEndBoss - This function controls the collision between bottles the final boss. If the bottle hits the boss, the hit() 
      * function is activated and the Boss's energy decreases by 20% for each bottle that hits it
      * After 130 seconds, the bottle is removed via the deleteBottleFromCtx(bottle) function
+     * @returns {void}
      */
     checkCollisionBottleEndBoss() {
         this.throwableObjects.forEach((bottle) => {
@@ -233,8 +260,9 @@ class World {
     }
 
     /**
-     * This function controls the distance between Character Pepe and the final Boss. 
+     * @property {Function} checkDistanceBetweenCharAndBoss - This function controls the distance between Character Pepe and the final Boss. 
      * If the distance between them is 350 pixels or less, the End Boss attacks
+     * @returns {void}
      */
     checkDistanceBetweenCharAndBoss() {
         if ((this.endBoss.x - this.character.x <= 500)) {
@@ -248,9 +276,10 @@ class World {
     }
 
     /**
-     * This function controls the current position of the final boss. If it is less than or equal to 1000 pixels, 
+     * @property {Function} checkPositionEndBoss - This function controls the current position of the final boss. If it is less than or equal to 1000 pixels, 
      * this means that it has moved far from its original position. 
      * It then moves back until it reaches 2000 pixels, which would be its original position
+     * @returns {void}
      */
     checkPositionEndBoss() {
         if (this.endBoss.x <= 1000) {
@@ -261,9 +290,10 @@ class World {
     }
 
     /**
-     * This function checks whether there are any bottles to be thrown. 
+     * @property {Function} checkThrowObject - This function checks whether there are any bottles to be thrown. 
      * If so, when the user presses the D key on the keyboard, the bottle is thrown. 
      * Then the value of the statusBottles variable is decremented by 1
+     * @returns {void}
      */
     checkThrowObject() {
         if (this.keyboard.D == true && this.statusbarBottles.statusBottles > 0) {
@@ -281,7 +311,8 @@ class World {
     }
 
     /**
-     * This function draws the images we pass as arguments within the canvas
+     * @property {Function} draw - This function draws the images we pass as arguments within the canvas
+     * @returns {void}
      */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // questa riga di codice cancella limmagine nella posizione attuale
@@ -315,8 +346,9 @@ class World {
     }
 
     /**
-     * This function adds the current object passed as an argument that we want to draw to the canvas
+     * @property {Function} addToMap - This function adds the current object passed as an argument that we want to draw to the canvas
      * @param {object} mo - the movable object we want to draw within the canvas
+     * @returns {void}
      */
     addToMap(mo) {
         if (mo.otherDirection) {
@@ -332,9 +364,10 @@ class World {
     }
 
     /**
-     * This function takes an array as its argument. This array is then iterated through 
+     * @property {Function} addObjectsToMap - This function takes an array as its argument. This array is then iterated through 
      * the forEach loop and each object within the array is drawn in the canvas
      * @param {object} objects - the array of objects we want to iterate over to draw them in the canvas
+     * @returns {void}
      */
     addObjectsToMap(objects) {
         objects.forEach((o) => {
@@ -343,9 +376,10 @@ class World {
     }
 
     /**
-     * This function takes the current object as an argument 
+     * @property {Function} flipImage - This function takes the current object as an argument 
      * and flips the image if this object moves in the opposite direction
      * @param {object} mo -  The movable object whose image we want to flipping
+     * @returns {void}
      */
     flipImage(mo) {
         this.ctx.save();
@@ -355,8 +389,9 @@ class World {
     }
 
     /**
-     * This function takes the movable object as an argument and flips the image back
+     * @property {Function} flipImageBack - This function takes the movable object as an argument and flips the image back
      * @param {object} mo - The movable object whose image we want to flipping back
+     * @returns {void}
      */
     flipImageBack(mo) {
         this.ctx.restore();

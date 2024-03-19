@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: fullScreenFunctions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+    <div id="main">
+
+        <h1 class="page-title">Source: fullScreenFunctions.js</h1>
+
+
+
+
+
+
+        <section>
+            <article>
+                <pre class="prettyprint source linenums"><code>
+/**
+ * This function sets the fullscreen of the game.
+ * It sets the width and height of the canvas to 100 per cent so that it fills the 
+ * entire screen, and enlarges the pause and play game, pause and play music and fullscreen buttons
+ */
+function fullScreen() {
+    fullscreen = false;
+    let endscreen = document.getElementById('endscreen-container');
+    canvas.style.height = '100%';
+    canvas.style.width = '100%';
+    openFullscreen(endscreen);
+    document.getElementById('fullscreen-icon').classList.add('d-none');
+    document.getElementById('compress-icon').classList.remove('d-none');
+    biggerButtons();
+    biggerIcons();
+    biggerGameButtons();
+    biggerTitlesBottlesCoinsCount();
+    document.getElementById('new-bottles-advice').classList.add('fullscreen-advice')
+}
+
+/**
+ * 
+ * @param {object} elem - the Object / HTML element on which you wish to set the fullscreen
+ */
+function openFullscreen(elem) {
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+    };
+}
+
+/**
+ * This function enlarges the pause and play game, pause and play music and fullscrreen buttons
+ */
+function biggerButtons() {
+    document.getElementById('pause-and-play-button').classList.add('fullScreenButton');
+    document.getElementById('button-audio-container').classList.add('fullScreenButton');
+    document.getElementById('button-fullscreen-container').classList.add('fullScreenButton');
+}
+
+/**
+ * This function enlarges the pause and play game, pause and play music and fullscreen icons
+ */
+function biggerIcons() {
+    document.getElementById('icon-pause').classList.add('fullScreenIcons');
+    document.getElementById('icon-play').classList.add('fullScreenIcons');
+    document.getElementById('audio-icon').classList.add('fullScreenIcons');
+    document.getElementById('fullscreen-icon').classList.add('fullScreenIcons');
+    document.getElementById('compress-icon').classList.add('fullScreenIcons');
+}
+
+/**
+ * This function allows you to exit from the full screen mode
+ * @param {object} event - the event whose propagation we want to stop
+ */
+function fullScreenEscape(event) {
+    document.exitFullscreen();
+    document.getElementById('fullscreen-icon').classList.remove('d-none');
+    document.getElementById('compress-icon').classList.add('d-none');
+    canvas.style.height = '';
+    canvas.style.width = '';
+    shrinkButtons();
+    shrinkIcons();
+    schrinkGameButton();
+    shrinkTitlesBottlesCoinsCount();
+    document.getElementById('new-bottles-advice').classList.remove('fullscreen-advice')
+    event.stopPropagation();
+}
+
+/**
+ * This function shrinks the the pause and play game, pause and play music and fullscreen buttons 
+ * when the user exits full screen mode
+ */
+function shrinkButtons() {
+    document.getElementById('pause-and-play-button').classList.remove('fullScreenButton');
+    document.getElementById('button-audio-container').classList.remove('fullScreenButton');
+    document.getElementById('button-fullscreen-container').classList.remove('fullScreenButton')
+}
+
+/**
+ * This function shrinks the the pause and play game, pause and play music and fullscreen icons 
+ * when the user exits full screen mode
+ */
+function shrinkIcons() {
+    document.getElementById('icon-pause').classList.remove('fullScreenIcons');
+    document.getElementById('icon-play').classList.remove('fullScreenIcons');
+    document.getElementById('audio-icon').classList.remove('fullScreenIcons');
+    document.getElementById('fullscreen-icon').classList.remove('fullScreenIcons');
+    document.getElementById('compress-icon').classList.remove('fullScreenIcons');
+}
+
+/**
+ * This function enlarges the game buttons when the user is in full screen mode
+ */
+function biggerGameButtons() {
+    document.getElementById('arrow-left').classList.add('fullScreen-game-buttons');
+    document.getElementById('arrow-right').classList.add('fullScreen-game-buttons');
+    document.getElementById('jump').classList.add('fullScreen-game-buttons');
+    document.getElementById('bottle').classList.add('fullScreen-game-buttons');
+}
+
+/**
+ * This function shrinks the game buttons when the user escape from the full screen mode
+ */
+function schrinkGameButton() {
+    document.getElementById('arrow-left').classList.remove('fullScreen-game-buttons');
+    document.getElementById('arrow-right').classList.remove('fullScreen-game-buttons');
+    document.getElementById('jump').classList.remove('fullScreen-game-buttons');
+    document.getElementById('bottle').classList.remove('fullScreen-game-buttons');
+}
+
+/**
+ * This function enlarges the font size of bottle and coin counts titles and numbers
+ */
+function biggerTitlesBottlesCoinsCount() {
+    let countTitles = document.getElementsByClassName('count');
+    let countTitlesAsArray = [...countTitles];
+    countTitlesAsArray.forEach(title => {
+        title.classList.add('coinsAndBottleCount-fullscreen');
+    })
+}
+
+/**
+ * This function shrinks the font size of bottle and coin counts titles and numbers
+ */
+function shrinkTitlesBottlesCoinsCount() {
+    let countTitles = document.getElementsByClassName('count');
+    let countTitlesAsArray = [...countTitles];
+    countTitlesAsArray.forEach(title => {
+        title.classList.remove('coinsAndBottleCount-fullscreen');
+    })
+}</code></pre>
+            </article>
+        </section>
+
+
+
+
+    </div>
+
+    <nav>
+        <h2><a href="index.html">Home</a></h2>
+        <h3>Global</h3>
+        <ul>
+            <li><a href="global.html#biggerButtons">biggerButtons</a></li>
+            <li><a href="global.html#biggerGameButtons">biggerGameButtons</a></li>
+            <li><a href="global.html#biggerIcons">biggerIcons</a></li>
+            <li><a href="global.html#biggerTitlesBottlesCoinsCount">biggerTitlesBottlesCoinsCount</a></li>
+            <li><a href="global.html#doNotPause">doNotPause</a></li>
+            <li><a href="global.html#fullScreen">fullScreen</a></li>
+            <li><a href="global.html#fullScreenEscape">fullScreenEscape</a></li>
+            <li><a href="global.html#gameExplanationPopUp">gameExplanationPopUp</a></li>
+            <li><a href="global.html#hideGameExplanationPopUp">hideGameExplanationPopUp</a></li>
+            <li><a href="global.html#init">init</a></li>
+            <li><a href="global.html#muteMusic">muteMusic</a></li>
+            <li><a href="global.html#openFullscreen">openFullscreen</a></li>
+            <li><a href="global.html#pauseGame">pauseGame</a></li>
+            <li><a href="global.html#resetChickenProperties">resetChickenProperties</a></li>
+            <li><a href="global.html#resetCloudsProperties">resetCloudsProperties</a></li>
+            <li><a href="global.html#resetEndbossProperties">resetEndbossProperties</a></li>
+            <li><a href="global.html#resetSmallChickenProperties">resetSmallChickenProperties</a></li>
+            <li><a href="global.html#restartGame">restartGame</a></li>
+            <li><a href="global.html#restartSong">restartSong</a></li>
+            <li><a href="global.html#resumeCharacterAndEndboss">resumeCharacterAndEndboss</a></li>
+            <li><a href="global.html#resumeEnemiesCloudBottleCoin">resumeEnemiesCloudBottleCoin</a></li>
+            <li><a href="global.html#resumeGame">resumeGame</a></li>
+            <li><a href="global.html#resumeSmallChicken">resumeSmallChicken</a></li>
+            <li><a href="global.html#schrinkGameButton">schrinkGameButton</a></li>
+            <li><a href="global.html#setHTML">setHTML</a></li>
+            <li><a href="global.html#shrinkButtons">shrinkButtons</a></li>
+            <li><a href="global.html#shrinkIcons">shrinkIcons</a></li>
+            <li><a href="global.html#shrinkTitlesBottlesCoinsCount">shrinkTitlesBottlesCoinsCount</a></li>
+            <li><a href="global.html#startGame">startGame</a></li>
+            <li><a href="global.html#stopCharacter">stopCharacter</a></li>
+            <li><a href="global.html#stopEnemyBossCoinBottle">stopEnemyBossCoinBottle</a></li>
+            <li><a href="global.html#stopSmallChicken">stopSmallChicken</a></li>
+        </ul>
+    </nav>
+
+    <br class="clear">
+
+    <footer>
+        Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 18 2024 23:29:00
+        GMT+0100 (Mitteleuropäische Normalzeit)
+    </footer>
+
+    <script> prettyPrint(); </script>
+    <script src="scripts/linenumber.js"> </script>
+</body>
+
+</html>

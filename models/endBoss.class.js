@@ -1,3 +1,6 @@
+/**
+ * This class is an extension of the MovableObject class and represents the End Boss object.
+ */
 class EndBoss extends MovableObject {
 
     x = 2000;
@@ -59,6 +62,12 @@ class EndBoss extends MovableObject {
         'img/4_enemie_boss_chicken/1_walk/G4.png',
     ];
 
+    /**
+     * The constructor of the End Boss class loads the initial image and the 
+     * images of the alert, walk, wounding and death animations into the imageCache object.
+     * Then the animate() function is called to start the various animations and finally 
+     * the gameOver() function, which will only be activated if the end boss has been defeated.
+     */
     constructor() {
         super().loadImage(this.IMAGES_ALERT[0]);
         this.loadImages(this.IMAGES_ALERT);
@@ -71,7 +80,8 @@ class EndBoss extends MovableObject {
     }
 
     /**
-    * This function play the animation of this object
+    * @property {Function} animate - This function play the animation of this object
+    * @returns {Boolean}
     */
     animate() {
         setInterval(() => {
@@ -96,7 +106,8 @@ class EndBoss extends MovableObject {
     }
 
     /**
-     * This function allows the object in question to move to the left
+     * @property {Function} walkToLeft This function allows the object in question to move to the left.
+     * @returns {void}
      */
     walkToLeft() {
         this.speed = 5;
@@ -105,7 +116,9 @@ class EndBoss extends MovableObject {
     }
 
     /**
-     * This function allows the object in question to move to the right, while attacking animations are activated
+     * @property {Function} goOnTheAttack - This function allows the object in question to move 
+     * to the right, while attacking animations are activated.
+     * @returns {void}
      */
     goOnTheAttack() {
         this.speed = 20;
@@ -113,8 +126,10 @@ class EndBoss extends MovableObject {
         this.playAnimation(this.IMAGES_ATTACK)
     }
 
-    /**This function returns the object in question backwards, making it move to the right
-     * 
+    /**
+     * @property {Function} walkBack - This function returns the object in question backwards, 
+     * making it move to the right.
+     * @returns {void}
      */
     walkBack() {
         this.x += this.speed;
@@ -122,9 +137,10 @@ class EndBoss extends MovableObject {
     }
 
     /**
-     * This function causes the object in question to move downwards when it is knocked down. In the meantime, 
+     * @property {Function} moveDown This function causes the object in question to move downwards when it is knocked down. In the meantime, 
      * the animations with images of the enemy's defeat are activated and the variable with the victory sound 
-     * is played
+     * is played.
+     * @returns {void}
      */
     moveDown() {
         super.moveDown();
@@ -132,7 +148,9 @@ class EndBoss extends MovableObject {
         this.VICTORY_SOUND.play();
     }
     /**
-     * This function displays the "Game Over" overlay when the End Boss has been knocked down
+     * @property {Function} gameOver This function displays the "Game Over" overlay when the End Boss 
+     * has been knocked down.
+     * @returns {void} 
      */
     gameOver() {
         document.getElementById('endscreen-game-over').classList.remove('d-none');

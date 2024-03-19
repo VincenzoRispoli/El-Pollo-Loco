@@ -1,5 +1,8 @@
+/**
+ * This class is an extension of the MovableObject class and represents the small chicken object.
+ */
 class SmallChicken extends MovableObject {
-
+    
     width = 50;
     height = 70;
     y = 360;
@@ -12,6 +15,12 @@ class SmallChicken extends MovableObject {
     TWEET = new Audio('assets/audio/tweet.mp3');
     enemyIsDead = false;
 
+    /**
+     * The constructor of the SmallChicken class loads the initial 
+     * image and the walking image array of the small chicken. It then sets a random value at dimension x
+     * ranging from 500 to 2000 pixels and a random velocity ranging from 0.50 pixels to 1 pixel.
+     * Finally, it starts animations with the animate() function.
+     */
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -21,7 +30,8 @@ class SmallChicken extends MovableObject {
     }
 
     /**
-     * This function play the animation of this object
+     * @property {Function} animate -This function play the animation of this object
+     * @returns {void}
      */
     animate() {
         if (!this.enemyIsDead) {
@@ -53,41 +63,42 @@ class SmallChicken extends MovableObject {
     }
 
     /**
-     * This function checks whether the object in question can move to the left
-     * @returns - a boolean value true or false
+     * @property {Function} canMoveLeft- This function checks whether the object in question can move to the left
+     * @returns {Boolean} - a boolean value true or false
      */
     canMoveLeft() {
         return !this.theGameIsPaused && !this.enemyIsDead;
     }
 
     /**
-     * This function checks whether the object in question has been knocked down
-     * @returns - a boolean value true or false
+     * @property {Function} wasKnockedDown - This function checks whether the object in question has been knocked down
+     * @returns {Boolean} - a boolean value true or false
      */
     wasKnockedDown() {
         return this.enemyIsDead && !this.theGameIsPaused && !world.character.isDead();
     }
 
     /**
-     * This function checks whether the object in question can walk
-     * @returns - a boolean value true or false
+     * @property {Function} canWalk - This function checks whether the object in question can walk
+     * @returns {Boolean} - a boolean value true or false
      */
     canWalk() {
         return !this.enemyIsDead && !this.theGameIsPaused;
     }
 
-     /**
-     * This function checks whether the object in question can jump
-     * @returns - a boolean value true or false
-     */
+    /**
+    * @property {Function} canJump This function checks whether the object in question can jump
+    * @returns {Boolean} - a boolean value true or false
+    */
     canJump() {
         return !this.enemyIsDead && !this.theGameIsPaused;
     }
 
     /**
-     * This function displays the image depicting the death of the object in question, 
+     * @property {Function} moveDown - This function displays the image depicting the death of the object in question, 
      * and via the function moveDown() inherited from the super class, 
      * moves downwards to be removed from the canvas
+     * @returns {Boolean}
      */
     moveDown() {
         this.loadImage('img/3_enemies_chicken/chicken_small/2_dead/dead.png');
@@ -96,9 +107,10 @@ class SmallChicken extends MovableObject {
     }
 
     /**
-     * This function allows the object in question to jump thanks to the jump() 
+     * @property {Function} jump  This function allows the object in question to jump thanks to the jump() 
      * function inherited from the super class.
      * Finally, the variable TWEEW containing the chirping sound is played
+     * @returns {void}
      */
     jump() {
         this.speedY = 10 + Math.random() * 25

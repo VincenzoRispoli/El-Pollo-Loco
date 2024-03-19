@@ -1,5 +1,8 @@
-class StatusbarEndBoss extends DrawbleObject {
-    //  x = 2157
+/**
+ * This class is an instance of the DrawableObject class and represents the StatusbarEndBoss object, 
+ * the end boss's health bar.
+ */
+class StatusbarEndBoss extends DrawableObject {
     x = 500
     y = 0
     width = 200;
@@ -16,6 +19,10 @@ class StatusbarEndBoss extends DrawbleObject {
 
     percentage = 100;
 
+    /**
+    * The constructor of the StatusbarEndBoss class loads the statusbar images of the end boss's health into the imageCache{} 
+    * object, then calls the setPercentage function
+    */
     constructor() {
         super();
         this.loadImages(this.STATUSBAR_ENDBOSS);
@@ -23,10 +30,11 @@ class StatusbarEndBoss extends DrawbleObject {
     }
 
     /**
-     * This function sets the current energy value of the object in question.
+     * @property {Function} setPercentage - This function sets the current energy value of the object in question.
      * As the energy value of the object in question decreases, 
      * an image of the health status bar is shown in the canvas with a shorter bar
      * @param {number} percentage - numerical value of the energy of an object
+     * @returns {void}
      */
     setPercentage(percentage) {
         this.percentage = percentage;

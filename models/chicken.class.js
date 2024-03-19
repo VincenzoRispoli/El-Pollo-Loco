@@ -1,3 +1,6 @@
+/**
+ * This class is an extension of the MovableObject class and represents the chicken object.
+ */
 class Chicken extends MovableObject {
     x = 300;
     y = 330;
@@ -12,8 +15,12 @@ class Chicken extends MovableObject {
     ]
     enemyIsDead = false;
 
-
-
+    /**
+     * The constructor of the Chicken class loads the initial 
+     * image and the walking image array of the chicken. It then sets a random value at dimension x
+     * ranging from 500 to 2000 pixels.
+     * Finally, it starts animations with the animate() function.
+     */
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING)
@@ -22,7 +29,8 @@ class Chicken extends MovableObject {
     }
 
     /**
-     * This function play the animations of this Object
+     * @property {Function} animate - This function play the animations of this Object.
+     * @returns {void}
      */
     animate() {
         setInterval(() => {
@@ -37,9 +45,10 @@ class Chicken extends MovableObject {
     }
 
     /**
-     * This function check the status of chickens. If one of the chickens is knocked down, the moveDown() 
+     * @property {Function} checkTheStateOfChicken - This function check the status of chickens. If one of the chickens is knocked down, the moveDown() 
      * function is activated and makes the chicken move downwards. Otherwise, if no collision occurs, 
-     * the chicken continues walking to the left
+     * the chicken continues walking to the left.
+     * @returns {void}
      */
     checkTheStateOfChicken() {
         if (this.enemyIsDead && !this.theGameIsPaused && !world.character.isDead()) {

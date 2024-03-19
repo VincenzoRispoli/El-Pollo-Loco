@@ -1,3 +1,6 @@
+/**
+ * This class is an extension of the MovableObject class and represents the Bottle object.
+ */
 class Bottle extends MovableObject {
     y = 330;
     x = 200 + Math.random() * 800;
@@ -10,6 +13,13 @@ class Bottle extends MovableObject {
     theGameIsPaused = false;
     isGrabbed = false;
     BOTTLE_TAKEN = new Audio('assets/audio/grab-bottle.mp3');
+
+    /**
+     * The constructor of the Bottle class loads the single image and the array of images 
+     * for the animations. Then the animate() function is called for the various animations, 
+     * and finally the playGrabbindSound() function is called, which contains a sound effect, which is only 
+     * activated when a bottle is grabbed.
+     */
     constructor() {
         super();
         this.loadImage(this.IMAGES_BOTTLE[0]);
