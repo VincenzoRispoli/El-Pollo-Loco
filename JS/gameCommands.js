@@ -1,5 +1,7 @@
 /**
  * This function is checked if the screen of a mobile device has changed orientation
+ * @param {string} orientationchange - event that is listened when the mobile screen is rotated.
+ * @returns {void}
  */
 window.addEventListener('orientationchange', () => {
     if (window.orientation == 90) {
@@ -11,7 +13,9 @@ window.addEventListener('orientationchange', () => {
 
 /**
  * This event listener shrinks the the pause and play game, pause and play music and fullscreen icons 
- * when the user exits full screen mode with the "Esc" Key
+ * when the user exits full screen mode with the "Esc" Key.
+ * @param {string} fullscreenchange - event that is listened when the user escape from the fullscreen mode.
+ * @returns {void}
  */
 document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement) {
@@ -23,7 +27,9 @@ document.addEventListener('fullscreenchange', () => {
 })
 
 /**
- * This event listener checks if one of these keys is pressed
+ * This event listener checks if one of these keys is pressed.
+ * @param {string} keydown - event that is listened when the user presses one of the listed keys.
+ * @returns {void}
  */
 window.addEventListener('keydown', (e) => {
     if (e.keyCode == 38) {
@@ -45,6 +51,8 @@ window.addEventListener('keydown', (e) => {
 /**
  * /**
  * This event listener checks if one of these keys is released
+ * @param {string} keyup - event that is listened when the user releases one of the listed keys
+ * @returns {void}
  */
 window.addEventListener('keyup', (e) => {
     if (e.keyCode == 38) {
@@ -64,6 +72,9 @@ window.addEventListener('keyup', (e) => {
 
 /**
  * This event listener checks if one of these keys is pressed or released in the mobile screens
+ * @param {string} touchstart - event that is listened when the user touch one of the listed 
+ * @param {string} touchend - event that is listened when the user releases one of the listed keys
+ * @returns {void}
  */
 document.getElementById('arrow-left').addEventListener('touchstart', (e) => {
     e.preventDefault();
