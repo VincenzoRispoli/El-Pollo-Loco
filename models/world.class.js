@@ -102,7 +102,6 @@ class World {
     checkCollisonFromAbove() {
         this.level.enemies.forEach((enemy) => {
             if (this.isCollidingFromAbove(enemy)) {
-                console.log(enemy);
                 enemy.enemyIsDead = true;
                 enemy.HIT_SOUND.play();
                 this.character.jump();

@@ -4,7 +4,7 @@
 class Coins extends MovableObject {
 
     y = 100 + Math.random() * 50;
-    x = 300 + Math.random() * 1200;
+    x = 800 + Math.random() * 1200;
     height = 130;
     width = 130;
     isEarned = false
