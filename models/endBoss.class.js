@@ -145,7 +145,9 @@ class EndBoss extends MovableObject {
     moveDown() {
         super.moveDown();
         this.playAnimation(this.IMAGES_DEAD);
-        this.VICTORY_SOUND.play();
+        if (!MUSIC.muted) {
+            this.VICTORY_SOUND.play();
+        }
     }
     /**
      * @property {Function} gameOver This function displays the "Game Over" overlay when the End Boss 

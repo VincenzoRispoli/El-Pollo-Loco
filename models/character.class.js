@@ -115,15 +115,16 @@ class Character extends MovableObject {
     animate() {
         setInterval(() => {
             this.checkCharacterMovements();
-        }, 1000 / 25)
-
+        }, 1000 / 25);
         setInterval(() => {
             this.checkThePositioAndStateCharacter();
         }, 1000 / 25);
-
         setInterval(() => {
             this.checkTheCharacterIdle();
-        }, 200)
+        }, 200);
+        setInterval(() => {
+            this.playJumpImagesAnimations();
+        }, 100);
     }
 
     /**
@@ -131,7 +132,11 @@ class Character extends MovableObject {
      * @returns {void}
      */
     checkCharacterMovements() {
-        if (this.canMoveRight()) {
+        if (this.canMoveToLeftAndJump()) {
+            this.moveToLeftAndJump();
+        } else if (this.canMoveToRightAndJump()) {
+            this.moveToRightAndJump();
+        } else if (this.canMoveRight()) {
             this.moveRight()
         } else if (this.canMoveLeft()) {
             this.moveLeft()
@@ -150,14 +155,25 @@ class Character extends MovableObject {
         if (this.isDead() && !this.theGameIsPaused) {
             this.gameOver();
         } else {
-            if (this.isAboveGround() && !this.theGameIsPaused) {
-                this.playAnimation(this.IMAGES_JUMPING);
+            if (this.canWalk()) {
+                this.playAnimation(this.IMAGES_WALKING);
+                if (!MUSIC.muted) {
+                    this.WALKING_AUDIO.play();
+                }
             } else if (this.isHurt() && !this.theGameIsPaused) {
                 this.playAnimation(this.IMAGES_HURT);
-            } else if (this.isWalking() && !this.theGameIsPaused) {
-                this.playAnimation(this.IMAGES_WALKING);
-                this.WALKING_AUDIO.play();
             }
+        }
+    }
+
+    /**
+     * @property {Function} playJumpImagesAnimations - This function activates the jump animation images 
+     * when the Character is in the air.
+     * @returns {void}
+     */
+    playJumpImagesAnimations() {
+        if (this.isAboveGround() && !this.theGameIsPaused) {
+            this.playAnimation(this.IMAGES_JUMPING);
         }
     }
 
@@ -181,6 +197,44 @@ class Character extends MovableObject {
      */
     youLost() {
         document.getElementById('endscreen-you-lost').classList.remove('d-none');
+    }
+
+    /**
+     * @property {Function} canMoveToLeftAndJump - This function controls if the character can jump and 
+     * move to the left at the same time.
+     * @returns {Boolean} - a boolean value of true or false
+     */
+    canMoveToLeftAndJump() {
+        return this.world.keyboard.SPACE && this.world.keyboard.LEFT && !this.theGameIsPaused && !this.isAboveGround()
+    }
+
+    /**
+     * @property {Function} moveToLeftAndJump - This function allows the Character to move to the left and 
+     * jump at the same time.
+     * @returns {void}
+     */
+    moveToLeftAndJump() {
+        this.jump();
+        this.moveLeft();
+    }
+
+    /**
+     * @property {Function} canMoveToRightAndJump -  This function controls if the character can jump and 
+     * move to the right at the same time.
+     * @returns {Boolean} - a boolean value of true or false
+     */
+    canMoveToRightAndJump() {
+        return this.world.keyboard.SPACE && this.world.keyboard.RIGHT && !this.theGameIsPaused && !this.isAboveGround()
+    }
+
+    /**
+     * @property {Function} moveToRightAndJump - This function allows the Character to move to the right and 
+     * jump at the same time.
+     * @returns {void}
+     */
+    moveToRightAndJump() {
+        this.jump();
+        this.moveRight();
     }
 
     /**
@@ -240,8 +294,10 @@ class Character extends MovableObject {
      * @returns {void}
      */
     jump() {
+        if (!MUSIC.muted) {
+            this.JUMPING_AUDIO.play();
+        }
         super.jump();
-        this.JUMPING_AUDIO.play();
         this.lastMovement = new Date().getTime();
     }
 
@@ -256,7 +312,18 @@ class Character extends MovableObject {
         this.speedY += 5
         this.acceleration -= 2
         this.moveDown();
-        this.SOUND_FAILURE.play();
+        if (!MUSIC.muted) {
+            this.SOUND_FAILURE.play();
+        }
+    }
+
+
+    /**
+     * @property {Function} canWalk - This function checks whether the Character can walk.
+     * @returns {Boolean} - a boolean value of true or false. 
+     */
+    canWalk() {
+        return this.isWalking() && !this.theGameIsPaused && !this.isAboveGround()
     }
 
     /**

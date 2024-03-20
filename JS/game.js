@@ -46,11 +46,17 @@ async function restartGame() {
     resetSmallChickenProperties();
     resetEndbossProperties();
     resetCloudsProperties();
+    resetBottlesAndCoinsCount();
     await init();
     world.character.lastMovement = new Date().getTime();
     MUSIC.currentTime = 0;
     MUSIC.play();
     setHTML();
+}
+
+function resetBottlesAndCoinsCount(){
+    document.getElementById('bottles-count').innerHTML = 0;
+    document.getElementById('coins-count').innerHTML = 0;
 }
 
 /**
@@ -261,10 +267,12 @@ function stopEnemyBossCoinBottle() {
 function muteMusic() {
     document.getElementById('button-audio-container').classList.toggle('opacity-audio-btn');
     MUSIC.muted = !MUSIC.muted;
+    muteCharacterSounds();
+    muteEnemiesAndCoinsSounds();
 }
 
 /**
- * @property {Function} muteMusic - This event listener restarts the music when it is over.
+ * @property {EventListener} restartSongEventListener - This event listener restarts the music when it is over.
  * @returns {void}
  */
 MUSIC.addEventListener('ended', () => {

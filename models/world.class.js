@@ -102,11 +102,23 @@ class World {
     checkCollisonFromAbove() {
         this.level.enemies.forEach((enemy) => {
             if (this.isCollidingFromAbove(enemy)) {
-                enemy.enemyIsDead = true;
-                enemy.HIT_SOUND.play();
-                this.character.jump();
+                this.enemyIsDead(enemy);
             };
         });
+    }
+
+    /**
+     * @property {Function} - This function, when the enemy (chicken or small chicken) is defeat,
+     * play the hit sound, set the variable enemyIsDead of true and make the Character jump.
+     * @param {Object} enemy - the object on which the character collides from above.
+     * @returns {void}
+     */
+    enemyIsDead(enemy) {
+        if (!MUSIC.muted) {
+            enemy.HIT_SOUND.play();
+        }
+        enemy.enemyIsDead = true;
+        this.character.jump();
     }
 
     /**
@@ -115,9 +127,9 @@ class World {
      * @param {Object} enemy - the enemy (Chicken or Small Chicken) with which the character collides
      * @returns {Boolean} - a Boolean value of true or false
      */
-    isCollidingFromAbove(enemy){
+    isCollidingFromAbove(enemy) {
         return this.character.isColliding(enemy) && this.character.isAboveGround() &&
-        this.character.speedY < 0 && !enemy.enemyIsDead && !this.character.isDead()
+            this.character.speedY < 0 && !enemy.enemyIsDead && !this.character.isDead()
     }
 
     /**

@@ -56,7 +56,7 @@ class Coins extends MovableObject {
      * @returns {void} 
      */
     playCoinSound() {
-        if (this.isEarned) {
+        if (this.isEarned && !MUSIC.muted) {
             this.COIN_SOUND.play();
         }
     }

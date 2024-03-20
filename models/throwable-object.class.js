@@ -74,14 +74,27 @@ class ThrowableObject extends MovableObject {
     checkBottleState() {
         if (this.hitsSomething()) {
             this.bottleHasBroken();
-        } else if (this.bottleIsFlying) {
-            if (world.character.otherDirection) { // se Pepe é direzionato verso sinistra, inverti la x a - quindi la direzione di lancio delle bottiglie
-                this.bottleIsThrownToLeft();
-            } else {
-                this.bottleIsThrownToRight();
-            }
+        } else if (world.character.otherDirection) { // se Pepe é direzionato verso sinistra, inverti la x a - quindi la direzione di lancio delle bottiglie
+            console.log(this.y);
+            this.bottleIsThrownToLeft();
+        } else if (!world.character.otherDirection) {
+            console.log(this.y);
+            this.bottleIsThrownToRight();
         }
     }
+
+    // checkBottleState() {
+    //     if (this.hitsSomething()) {
+    //         this.bottleHasBroken();
+    //     } else if (world.character.otherDirection) { // se Pepe é direzionato verso sinistra, inverti la x a - quindi la direzione di lancio delle bottiglie
+    //         console.log(this.y);
+    //         this.bottleIsThrownToLeft();
+    //     } else if (!world.character.otherDirection) {
+    //         console.log(this.y);
+    //         this.bottleIsThrownToRight();
+    //     }
+    // }
+
 
     /**
      * @property {Function} hitsSomething This function returns a value of true if the bottle has collided with an enemy or has reached 
@@ -98,7 +111,9 @@ class ThrowableObject extends MovableObject {
      * @returns {void}
      */
     bottleHasBroken() {
-        this.BREAKING_SOUND.play();
+        if (!MUSIC.muted) {
+            this.BREAKING_SOUND.play();
+        }
         this.speed = 0;
         this.speedY = 0;
         this.playAnimation(this.BOTTLE_SPLASH);

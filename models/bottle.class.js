@@ -45,7 +45,7 @@ class Bottle extends MovableObject {
 
      */
     playGrabbindSound() {
-        if (this.isGrabbed) {
+        if (this.isGrabbed && !MUSIC.muted) {
             this.BOTTLE_TAKEN.play();
         }
     }
