@@ -267,8 +267,6 @@ function stopEnemyBossCoinBottle() {
 function muteMusic() {
     document.getElementById('button-audio-container').classList.toggle('opacity-audio-btn');
     MUSIC.muted = !MUSIC.muted;
-    muteCharacterSounds();
-    muteEnemiesAndCoinsSounds();
 }
 
 /**

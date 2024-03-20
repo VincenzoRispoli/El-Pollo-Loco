@@ -8,6 +8,7 @@ class ThrowableObject extends MovableObject {
     width = 80;
     height = 80;
     speed = 20;
+    bottleIsThrown = false
 
     BOTTLE_ROTATION = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -62,7 +63,7 @@ class ThrowableObject extends MovableObject {
 
         setTimeout(() => {
             clearInterval(interval);
-        }, 1200)
+        }, 1200);
     }
 
     /**
@@ -74,13 +75,12 @@ class ThrowableObject extends MovableObject {
     checkBottleState() {
         if (this.hitsSomething()) {
             this.bottleHasBroken();
-        } else if (world.character.otherDirection) { // se Pepe é direzionato verso sinistra, inverti la x a - quindi la direzione di lancio delle bottiglie
-            console.log(this.y);
+        } else if (world.character.otherDirection) {
             this.bottleIsThrownToLeft();
         } else if (!world.character.otherDirection) {
-            console.log(this.y);
             this.bottleIsThrownToRight();
         }
+
     }
 
     // checkBottleState() {
@@ -124,7 +124,7 @@ class ThrowableObject extends MovableObject {
      * @returns {Boolean} - a boolean value of true if the condition is true
      */
     bottleIsFlying() {
-        return this.y <= 334
+        return this.y < 90
     }
 
     /**
@@ -133,9 +133,9 @@ class ThrowableObject extends MovableObject {
      * @returns {void}
      */
     bottleIsThrownToLeft() {
-        this.x -= this.speed;
-        this.y += this.acceleration;
-        this.playAnimation(this.BOTTLE_ROTATION);
+            this.x -= this.speed;
+            this.y += this.acceleration;
+            this.playAnimation(this.BOTTLE_ROTATION);
     }
 
     /**
@@ -143,9 +143,9 @@ class ThrowableObject extends MovableObject {
      * @returns {void}
      */
     bottleIsThrownToRight() {
-        this.x += this.speed;
-        this.y += this.acceleration;
-        this.playAnimation(this.BOTTLE_ROTATION);
+            this.x += this.speed;
+            this.y += this.acceleration;
+            this.playAnimation(this.BOTTLE_ROTATION);
     }
 }
 

@@ -73,7 +73,7 @@ class Chicken extends MovableObject {
     checkIfChickenIsDead() {
         if (this.enemyIsDead && !this.theGameIsPaused) {
             this.loadImage('img/3_enemies_chicken/chicken_normal/2_dead/dead.png');
-            this.moveDown()
+            this.moveDown();
         }
     }
 
