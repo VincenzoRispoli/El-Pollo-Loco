@@ -321,9 +321,11 @@ class World {
         if (this.keyboard.D == true && this.statusbarBottles.statusBottles > 0) {
             if (this.character.otherDirection) {
                 let bottle = new ThrowableObject(this.character.x - 20, this.character.y + 50);
+                bottle.bottleIsThrownToLeft();
                 this.throwableObjects.push(bottle);
             } else {
                 let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+                bottle.bottleIsThrownToRight();
                 this.throwableObjects.push(bottle);
             }
             this.character.lastMovement = new Date().getTime();
