@@ -12,21 +12,6 @@ window.addEventListener('orientationchange', () => {
 })
 
 /**
- * This event listener shrinks the the pause and play game, pause and play music and fullscreen icons 
- * when the user exits full screen mode with the "Esc" Key.
- * @param {string} fullscreenchange - event that is listened when the user escape from the fullscreen mode.
- * @returns {void}
- */
-document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) {
-        document.getElementById('fullscreen-icon').classList.remove('d-none');
-        document.getElementById('compress-icon').classList.add('d-none');
-        shrinkButtons();
-        shrinkIcons();
-    }
-})
-
-/**
  * This event listener checks if one of these keys is pressed.
  * @param {string} keydown - event that is listened when the user presses one of the listed keys.
  * @returns {void}

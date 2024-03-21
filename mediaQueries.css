@@ -418,6 +418,9 @@
         object-fit: contain
     }
 
+    .fullScreen-restart-game{
+        font-size: 40px;
+    }
 
     .mobile-d-none {
         display: none;

@@ -16,7 +16,8 @@ function fullScreen() {
     biggerIcons();
     biggerGameButtons();
     biggerTitlesBottlesCoinsCount();
-    document.getElementById('new-bottles-advice').classList.add('fullscreen-advice')
+    biggerRestartButtons();
+    document.getElementById('new-bottles-advice').classList.add('fullscreen-advice');
 }
 
 /**
@@ -73,6 +74,7 @@ function fullScreenEscape(event) {
     shrinkIcons();
     schrinkGameButton();
     shrinkTitlesBottlesCoinsCount();
+    shrinkRestartButtons();
     document.getElementById('new-bottles-advice').classList.remove('fullscreen-advice')
     event.stopPropagation();
 }
@@ -150,3 +152,40 @@ function shrinkTitlesBottlesCoinsCount() {
         title.classList.remove('coinsAndBottleCount-fullscreen');
     });
 }
+
+function biggerRestartButtons() {
+    let restartButtons = document.getElementsByClassName('restart-game');
+    let restartButtonsAsArray = [...restartButtons];
+    restartButtonsAsArray.forEach(btn => {
+        btn.classList.add('fullScreen-restart-game');
+    });
+}
+
+function shrinkRestartButtons() {
+    let restartButtons = document.getElementsByClassName('restart-game');
+    let restartButtonsAsArray = [...restartButtons];
+    restartButtonsAsArray.forEach(btn => {
+        btn.classList.remove('fullScreen-restart-game');
+    });
+}
+
+/**
+ * This event listener shrinks the the pause and play game, pause and play music and fullscreen icons 
+ * when the user exits full screen mode with the "Esc" Key.
+ * @param {string} fullscreenchange - event that is listened when the user escape from the fullscreen mode.
+ * @returns {void}
+ */
+document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+        document.getElementById('fullscreen-icon').classList.remove('d-none');
+        document.getElementById('compress-icon').classList.add('d-none');
+        canvas.style.height = '';
+        canvas.style.width = '';
+        shrinkButtons();
+        shrinkIcons();
+        schrinkGameButton();
+        shrinkTitlesBottlesCoinsCount();
+        shrinkRestartButtons();
+        document.getElementById('new-bottles-advice').classList.remove('fullscreen-advice');
+    }
+})
