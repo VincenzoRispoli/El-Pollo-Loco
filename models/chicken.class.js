@@ -7,7 +7,6 @@ class Chicken extends MovableObject {
     height = 100;
     width = 90;
     speed = 0.50 + Math.random() * 2;
-    speedY = 20
     IMAGES_WALKING = [
         'img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
@@ -24,7 +23,7 @@ class Chicken extends MovableObject {
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING)
-        this.x = 500 + Math.random() * 2000;
+        this.x = 700 + Math.random() * 2000;
         this.animate();
     }
 
@@ -36,11 +35,9 @@ class Chicken extends MovableObject {
         setInterval(() => {
             this.checkIfChickenIsMovingToLeft();
         }, 1000 / 60);
-
         setInterval(() => {
             this.checkIfChickenIsDead();
         }, 1000 / 25)
-
         setInterval(() => {
             this.checkIfChickenIsWalking();
         }, 100)
@@ -57,15 +54,15 @@ class Chicken extends MovableObject {
     }
 
     /**
-     * @property {Funtion} canMoveToLeft - This function checks whether the Chicken object can move to the left
-     * @returns {Boolean} -  a boolean value of true or false
+     * @property {Funtion} canMoveToLeft - This function checks whether the Chicken object can move to the left.
+     * @returns {Boolean} -  a boolean value of true or false.
      */
     canMoveToLeft() {
         return !this.enemyIsDead && !this.theGameIsPaused
     }
 
     /**
-     * @property {Function} checkTheStateOfChicken - This function check the status of chickens. If one of the chickens is knocked down, the moveDown() 
+     * @property {Function} checkIfChickenIsDead - This function check the status of chickens. If one of the chickens is knocked down, the moveDown() 
      * function is activated and makes the chicken move downwards. Otherwise, if no collision occurs, 
      * the chicken continues walking to the left.
      * @returns {void}
@@ -73,6 +70,7 @@ class Chicken extends MovableObject {
     checkIfChickenIsDead() {
         if (this.enemyIsDead && !this.theGameIsPaused) {
             this.loadImage('img/3_enemies_chicken/chicken_normal/2_dead/dead.png');
+            this.speedY = 15;
             this.moveDown();
         }
     }

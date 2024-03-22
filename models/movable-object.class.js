@@ -156,27 +156,27 @@ class MovableObject extends DrawableObject {
         this.x -= this.speed;
     }
 
-     /**
-     * @property {Function} moveRight - This function makes the object in question move to the right
-     * @returns {void}
-     */
+    /**
+    * @property {Function} moveRight - This function makes the object in question move to the right
+    * @returns {void}
+    */
     moveRight() {
         this.x += this.speed;
     }
 
-     /**
-     * @property {Function} moveDown - This function makes the object in question move to down
-     * @returns {void}
-     */
+    /**
+    * @property {Function} moveDown - This function makes the object in question move to down
+    * @returns {void}
+    */
     moveDown() {
         this.y += this.speedY
     }
 
-     /**
-     * @property {Function} jump - This function allows the object in question to jump by 40 pixels if the object in question 
-     * is not above ground, else by 20 pixels if it is above ground.
-     * @returns {void}
-     */
+    /**
+    * @property {Function} jump - This function allows the object in question to jump by 40 pixels if the object in question 
+    * is not above ground, else by 20 pixels if it is above ground.
+    * @returns {void}
+    */
     jump() {
         if (this instanceof Character && this.isAboveGround()) {
             this.speedY = 20;

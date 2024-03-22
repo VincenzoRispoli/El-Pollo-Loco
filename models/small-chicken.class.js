@@ -24,7 +24,7 @@ class SmallChicken extends MovableObject {
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
-        this.x = 500 + Math.random() * 2000;
+        this.x = 600 + Math.random() * 2000;
         this.speed = 0.50 + Math.random() * 1;
         this.animate();
     }
@@ -69,6 +69,10 @@ class SmallChicken extends MovableObject {
         }, 1000 / 45)
     }
 
+    /**
+     * @property {Function} makeTheSmallChickenJump - This function allow the small chicken to jump.
+     * @returns {void}
+     */
     makeTheSmallChickenJump() {
         setInterval(() => {
             if (this.canJump()) {
@@ -77,6 +81,10 @@ class SmallChicken extends MovableObject {
         }, 3000);
     }
 
+     /**
+     * @property {Function} makeTheSmallChickenWalk - This function allow the small chicken to walk.
+     * @returns {void}
+     */
     makeTheSmallChickenWalk() {
         setInterval(() => {
             if (this.canWalk()) {
