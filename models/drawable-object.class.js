@@ -55,21 +55,3 @@ class DrawableObject {
     }
 }
 
-// drawFrame(ctx) {
-//     if (this instanceof Character || this instanceof Chicken || this instanceof Coins || this instanceof ThrowableObject || this instanceof SmallChicken || this instanceof EndBoss) { // assegnare le proprietá del bordo solo a pepe e chickens
-//         ctx.beginPath();
-//         ctx.lineWidth = "5";
-//         ctx.strokeStyle = "blue";
-//         ctx.rect(this.x, this.y, this.width, this.height);
-//         ctx.stroke();
-//     }
-
-//     if (this instanceof Character || this instanceof Bottle || this instanceof EndBoss) {
-//         ctx.beginPath();
-//         ctx.lineWidth = "5";
-//         ctx.strokeStyle = "red";
-//         ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right, this.height - this.offset.bottom);
-//         ctx.stroke();
-//     }
-// }
-
