@@ -1,167 +1,4 @@
-@media (max-width: 1050px) {
-    .chracter-mission-and-game-buttons {
-        flex-direction: column;
-    }
-
-    .character-container {
-        width: 100%;
-        margin-bottom: 20px
-    }
-
-    .cross-icon-container {
-        top: 16px;
-        right: 16px;
-        height: 35px;
-        width: 35px;
-    }
-
-    .coinsAndBottleCount-fullscreen {
-        font-size: 40px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .chracter-mission-and-game-buttons {
-        padding: 16px;
-    }
-
-    .cross-icon-container {
-        height: 32px;
-        width: 32px;
-        top: 8px;
-        right: 8px;
-    }
-
-    .pepe {
-        width: 80px;
-    }
-
-    .mission {
-        padding: 0;
-        font-size: 24px;
-    }
-
-    .buttons-game-container {
-        text-align: center;
-    }
-
-    .button-game {
-        font-size: 32px;
-    }
-
-    .pause-and-play-button {
-        width: 40px;
-        height: 40px;
-        padding: 6px;
-    }
-
-    .icon-pause {
-        height: 32px;
-        width: 32px;
-    }
-
-    .icon-play {
-        height: 32px;
-        width: 32px;
-    }
-
-    .button-audio-container {
-        width: 40px;
-        height: 40px;
-        padding: 6px;
-    }
-
-    .audio-icon {
-        height: 20px;
-        width: 20px;
-    }
-
-    .button-fullscreen-container {
-        width: 40px;
-        height: 40px;
-        padding: 6px;
-    }
-
-    .fullscreen-icon {
-        height: 20px;
-        width: 20px;
-    }
-}
-
-@media (max-width: 430px) {
-    .buttons-container {
-        gap: 6px;
-    }
-
-    .pause-and-play-button {
-        width: 28px;
-        height: 28px;
-        padding: 3px;
-    }
-
-    .icon-play {
-        height: 20px;
-        width: 20px;
-    }
-
-    .icon-pause {
-        height: 20px;
-        width: 20px;
-    }
-
-    .button-audio-container {
-        width: 28px;
-        height: 28px;
-        padding: 3px;
-    }
-
-    .audio-icon {
-        height: 16px;
-        width: 16px;
-    }
-
-    .button-fullscreen-container {
-        width: 28px;
-        height: 28px;
-        padding: 3px
-    }
-
-    .fullscreen-icon {
-        height: 14px;
-        width: 14px;
-    }
-}
-
-@media only screen and (max-width: 720px) {
-    .startscreen {
-        width: 100%;
-    }
-
-    .endscreen-container {
-        width: 100%;
-    }
-
-    canvas {
-        width: 100%;
-    }
-}
-
-@media only screen and (max-height: 480px) {
-    .startscreen {
-        height: 100vh;
-    }
-
-    .endscreen-container {
-        height: 100vh;
-    }
-
-    canvas {
-        height: 100%;
-    }
-}
-
-@media (max-width: 1370px) {
+@media only screen and (max-width: 1370px) {
     .mobile-buttons-container {
         position: absolute;
         bottom: 8px;
@@ -256,7 +93,151 @@
 
 }
 
+@media (min-width: 1051px) and (max-width: 1370px) {
+    .fullScreen-game-buttons {
+        height: 80px;
+        width: 80px;
+    }
+
+    .fullscreen-advice {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 1050px) {
+
+    .chracter-mission-and-game-buttons {
+        flex-direction: column;
+    }
+
+    .character-container {
+        width: 100%;
+        margin-bottom: 20px
+    }
+
+    .cross-icon-container {
+        top: 16px;
+        right: 16px;
+        height: 35px;
+        width: 35px;
+    }
+
+    .coinsAndBottleCount-fullscreen {
+        font-size: 40px;
+    }
+
+    .mobile-game-explanation-container {
+        display: flex;
+        gap: 16px;
+    }
+
+    .mobile-game-explanation-image-and-text-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: #fff;
+        font-size: 24px;
+        border: 1px solid #fff;
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .image-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        border-radius: 50px;
+        height: 48px;
+        width: 48px;
+        border: 2px solid #fff;
+        background: #d2af00;
+    }
+
+    .mobile-game-explanation-image {
+        height: 100%;
+        width: 100%;
+        filter: invert(1);
+        object-fit: contain
+    }
+
+    .fullScreen-restart-game {
+        font-size: 40px;
+    }
+
+    .mobile-d-none {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
+
+    .chracter-mission-and-game-buttons {
+        padding: 16px;
+    }
+
+    .cross-icon-container {
+        height: 32px;
+        width: 32px;
+        top: 8px;
+        right: 8px;
+    }
+
+    .pepe {
+        width: 80px;
+    }
+
+    .mission {
+        padding: 0;
+        font-size: 24px;
+    }
+
+    .buttons-game-container {
+        text-align: center;
+    }
+
+    .button-game {
+        font-size: 32px;
+    }
+
+    .pause-and-play-button {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+    }
+
+    .icon-pause {
+        height: 32px;
+        width: 32px;
+    }
+
+    .icon-play {
+        height: 32px;
+        width: 32px;
+    }
+
+    .button-audio-container {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+    }
+
+    .audio-icon {
+        height: 20px;
+        width: 20px;
+    }
+
+    .button-fullscreen-container {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+    }
+
+    .fullscreen-icon {
+        height: 20px;
+        width: 20px;
+    }
+
     .button-image-mobile {
         width: 40px;
         height: 40px;
@@ -276,13 +257,71 @@
     }
 }
 
+@media only screen and (max-width: 720px) {
+    .startscreen {
+        width: 100%;
+    }
+
+    .endscreen-container {
+        width: 100%;
+    }
+
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    .startscreen {
+        height: 100vh;
+    }
+
+    .endscreen-container {
+        height: 100vh;
+    }
+
+    canvas {
+        height: 100%;
+    }
+}
+
+
 @media (min-width: 666px) {
     .orizontal-screen-overlay {
         display: none;
     }
 }
 
+
+
+
+@media (min-width: 431px) and (max-width: 1050px) {
+    .fullScreenButton {
+        height: 40px;
+        width: 40px;
+    }
+
+    .fullScreenIcons {
+        height: 24px;
+        width: 24px;
+    }
+}
+
 @media (max-width: 666px) {
+    .mobile-game-explanation-container {
+        flex-direction: column;
+    }
+
+    .mission {
+        font-size: 20px;
+    }
+
+    .image-wrapper {
+        height: 32px;
+        width: 32px;
+        padding: 4px;
+    }
+
     .orizontal-screen-overlay {
         position: fixed;
         top: 0;
@@ -334,30 +373,50 @@
     }
 }
 
-@media (min-width: 1051px) and (max-width: 1370px) {
-    .fullScreen-game-buttons {
-        height: 80px;
-        width: 80px;
-    }
-
-    .fullscreen-advice {
-        font-size: 48px;
-    }
-}
-
-@media (min-width: 431px) and (max-width: 1050px) {
-    .fullScreenButton {
-        height: 40px;
-        width: 40px;
-    }
-
-    .fullScreenIcons {
-        height: 24px;
-        width: 24px;
-    }
-}
-
+/* --------------------- Max Width 430px --------------------------------- */
 @media (max-width: 430px) {
+    .buttons-container {
+        gap: 6px;
+    }
+
+    .pause-and-play-button {
+        width: 28px;
+        height: 28px;
+        padding: 3px;
+    }
+
+    .icon-play {
+        height: 20px;
+        width: 20px;
+    }
+
+    .icon-pause {
+        height: 20px;
+        width: 20px;
+    }
+
+    .button-audio-container {
+        width: 28px;
+        height: 28px;
+        padding: 3px;
+    }
+
+    .audio-icon {
+        height: 16px;
+        width: 16px;
+    }
+
+    .button-fullscreen-container {
+        width: 28px;
+        height: 28px;
+        padding: 3px
+    }
+
+    .fullscreen-icon {
+        height: 14px;
+        width: 14px;
+    }
+
     .startGame-button {
         font-size: 20px;
     }
@@ -377,67 +436,7 @@
     }
 }
 
-@media (max-width: 1050px) {
-    .mobile-game-explanation-container {
-        display: flex;
-        /* flex-direction: column; */
-        gap: 16px;
-    }
-
-    .mobile-game-explanation-image-and-text-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        color: #fff;
-        font-size: 24px;
-        border: 1px solid #fff;
-        padding: 8px;
-        border-radius: 10px;
-    }
-
-    .image-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8px;
-        border-radius: 50px;
-        height: 48px;
-        width: 48px;
-        border: 2px solid #fff;
-        background: #d2af00;
-    }
-
-    .mobile-game-explanation-image {
-        height: 100%;
-        width: 100%;
-        filter: invert(1);
-        object-fit: contain
-    }
-
-    .fullScreen-restart-game{
-        font-size: 40px;
-    }
-
-    .mobile-d-none {
-        display: none;
-    }
-}
-
-@media (max-width: 666px) {
-    .mobile-game-explanation-container {
-        flex-direction: column;
-    }
-
-    .mission {
-        font-size: 20px;
-    }
-
-    .image-wrapper {
-        height: 32px;
-        width: 32px;
-        padding: 4px;
-    }
-}
+/* --------------------------------------------------------- */
 
 @media (min-width: 1370px) {
     .mobile-buttons-container {
