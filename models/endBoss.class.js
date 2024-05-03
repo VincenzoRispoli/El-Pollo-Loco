@@ -91,7 +91,7 @@ class EndBoss extends MovableObject {
                 this.walkToLeft();
             } else if (this.attack && !this.theGameIsPaused) {
                 this.goOnTheAttack();
-            } else if (this.comeBack) {
+            } else if (this.comeBack && !this.theGameIsPaused) {
                 this.walkBack();
             } else if (!this.theGameIsPaused) {
                 this.playAnimation(this.IMAGES_ALERT);
