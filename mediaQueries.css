@@ -373,7 +373,6 @@
     }
 }
 
-/* --------------------- Max Width 430px --------------------------------- */
 @media (max-width: 430px) {
     .buttons-container {
         gap: 6px;
@@ -435,8 +434,6 @@
         width: 16px;
     }
 }
-
-/* --------------------------------------------------------- */
 
 @media (min-width: 1370px) {
     .mobile-buttons-container {

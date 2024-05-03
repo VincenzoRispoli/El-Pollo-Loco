@@ -291,41 +291,6 @@ canvas {
     stroke: #d2af00;
 }
 
-.startscreen {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 480px;
-    width: 720px;
-    background-image: url('img/9_intro_outro_screens/start/startscreen_2.png');
-    background-size: 99% 99%;
-    /* reduce the background-image of 1%*/
-    background-position: center center;
-    background-repeat: no-repeat;
-    gap: 16px;
-    border-radius: 20px;
-}
-
-.startGame-button {
-    margin-top: 16px;
-    background: #d2af00;
-    border: 2px solid #fff;
-    border-radius: 20px;
-    font-size: 32px;
-    font-weight: normal;
-    color: #fff;
-    font-family: "Zabars", sans-serif;
-    padding: 8px;
-    box-sizing: border-box;
-    transition: all 0.3s cubic-bezier(.215, .61, .355, 1);
-}
-
-.startGame-button:hover {
-    background: #b69800;
-    cursor: pointer;
-    transform: translateY(2px);
-}
-
 .status-game-container {
     display: flex;
     align-items: center;
@@ -389,65 +354,11 @@ canvas {
     color: #fff;
 }
 
-.coinsAndBottleCount-fullscreen{
+.coinsAndBottleCount-fullscreen {
     font-size: 80px;
 }
 
-.endscreen-you-lost {
-    background-image: url('img/9_intro_outro_screens/game_over/oh no you lost!.png');
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.endscreen-game-over {
-    background-image: url('img/9_intro_outro_screens/game_over/game over!.png');
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.restart-game {
-    margin-top: 80px;
-    background: #d2af00;
-    border: 2px solid #fff;
-    border-radius: 20px;
-    font-size: 32px;
-    font-weight: normal;
-    color: #fff;
-    font-family: "Zabars", sans-serif;
-    padding: 8px;
-    box-sizing: border-box;
-    transition: all 0.3s cubic-bezier(.215, .61, .355, 1);
-}
-
-.restart-game:hover {
-    background: #b69800;
-    cursor: pointer;
-    transform: translateY(2px);
-}
-
-.fullScreen-restart-game{
+.fullScreen-restart-game {
     font-size: 56px;
 }
 
