@@ -2,8 +2,8 @@
     .mobile-buttons-container {
         position: absolute;
         bottom: 8px;
-        left: 0;
-        right: 0;
+        left: 16px;
+        right: 16px;
         padding: 0 16px 0 16px;
         display: flex;
         justify-content: space-between;
@@ -14,7 +14,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 16px;
+        gap: 38px;
     }
 
     .button-image-mobile {
@@ -42,7 +42,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 16px;
+        gap: 38px;
     }
 
     .button-mobile-jump {
