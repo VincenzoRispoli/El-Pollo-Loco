@@ -4,10 +4,12 @@
  * @returns {void}
  */
 window.addEventListener('orientationchange', () => {
-    if (window.orientation == 90) {
-        document.getElementById('orizontal-screen-overlay').style.display = 'none';
-    } else if (window.orientation == 0) {
-        document.getElementById('orizontal-screen-overlay').style.display = '';
+    if (window.orientation == 90 || window.orientation == 180) {
+        document.getElementById('orizontal-screen-overlay').classList.add('d-none');
+        document.getElementById('areYouReady-container').classList.remove('d-none');
+    } else if (window.orientation == 0 || window.orientation == 360) {
+        document.getElementById('orizontal-screen-overlay').classList.remove('d-none');
+        document.getElementById('areYouReady-container').classList.add('d-none');
     }
 })
 

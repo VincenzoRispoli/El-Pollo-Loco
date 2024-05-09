@@ -8,13 +8,15 @@ let restart = false;
 let savedCharSpeedY;
 let savedSmallChikSpeedY;
 let fullscreen;
+let mobileFullscreen = false;
+let screenType;
 
 /**
  * @property {Function} init - Game initialisation function. When the page loads, we create an instance of the World class 
  * and pass the canvas and keyword class for keyboard commands as a parameter.
  * @returns {void}
  */
-async function init() {
+function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     if (!restart) {
@@ -30,6 +32,11 @@ function startGame() {
     setHTML()
     resumeGame();
     world.character.lastMovement = new Date().getTime();
+    if(window.innerHeight < 480){
+        setTimeout(()=> {
+            fullScreen('endscreen-container');
+        }, 100)
+    }
 }
 
 /**
@@ -54,7 +61,7 @@ async function restartGame() {
     setHTML();
 }
 
-function resetBottlesAndCoinsCount(){
+function resetBottlesAndCoinsCount() {
     document.getElementById('bottles-count').innerHTML = 0;
     document.getElementById('coins-count').innerHTML = 0;
 }

@@ -6,10 +6,10 @@
  */
 function fullScreen() {
     fullscreen = false;
-    let endscreen = document.getElementById('endscreen-container');
+    let screen = document.getElementById(screenType);
     canvas.style.height = '100%';
     canvas.style.width = '100%';
-    openFullscreen(endscreen);
+    openFullscreen(screen);
     document.getElementById('fullscreen-icon').classList.add('d-none');
     document.getElementById('compress-icon').classList.remove('d-none');
     biggerButtons();
@@ -18,6 +18,12 @@ function fullScreen() {
     biggerTitlesBottlesCoinsCount();
     biggerRestartButtons();
     document.getElementById('new-bottles-advice').classList.add('fullscreen-advice');
+}
+
+function mobileFullscreenTrue() {
+    screenType = 'startscreen';
+    fullScreen()
+    document.getElementById('areYouReady-container').classList.add('d-none');
 }
 
 /**
