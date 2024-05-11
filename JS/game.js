@@ -8,8 +8,6 @@ let restart = false;
 let savedCharSpeedY;
 let savedSmallChikSpeedY;
 let fullscreen;
-let mobileFullscreen = false;
-let screenType;
 
 /**
  * @property {Function} init - Game initialisation function. When the page loads, we create an instance of the World class 
@@ -29,14 +27,9 @@ function init() {
  * @returns {void}
  */
 function startGame() {
-    setHTML()
+    setHTML();
     resumeGame();
     world.character.lastMovement = new Date().getTime();
-    if(window.innerHeight < 480){
-        setTimeout(()=> {
-            fullScreen('endscreen-container');
-        }, 100)
-    }
 }
 
 /**
@@ -306,7 +299,8 @@ function gameExplanationPopUp() {
  * @returns {void}
  */
 function hideGameExplanationPopUp() {
-    document.getElementById('game-explanation-container').classList.add('translate-explanation-pop-up')
+    document.getElementById('game-explanation-container').classList.add('translate-explanation-pop-up');
+
 }
 
 /**

@@ -41,7 +41,7 @@
     font-weight: normal;
     color: #fff;
     font-family: "Zabars", sans-serif;
-    padding: 8px;
+    padding: 8px 15px;
     box-sizing: border-box;
     transition: all 0.3s cubic-bezier(.215, .61, .355, 1);
 }

@@ -6,7 +6,7 @@
  */
 function fullScreen() {
     fullscreen = false;
-    let screen = document.getElementById(screenType);
+    let screen = document.getElementById('endscreen-container');
     canvas.style.height = '100%';
     canvas.style.width = '100%';
     openFullscreen(screen);
@@ -18,12 +18,6 @@ function fullScreen() {
     biggerTitlesBottlesCoinsCount();
     biggerRestartButtons();
     document.getElementById('new-bottles-advice').classList.add('fullscreen-advice');
-}
-
-function mobileFullscreenTrue() {
-    screenType = 'startscreen';
-    fullScreen()
-    document.getElementById('areYouReady-container').classList.add('d-none');
 }
 
 /**
@@ -70,7 +64,7 @@ function biggerIcons() {
  * @param {object} event - the event whose propagation we want to stop.
  * @returns {void}
  */
-function fullScreenEscape(event) {
+function fullScreenEscape() {
     document.exitFullscreen();
     document.getElementById('fullscreen-icon').classList.remove('d-none');
     document.getElementById('compress-icon').classList.add('d-none');
@@ -82,7 +76,6 @@ function fullScreenEscape(event) {
     shrinkTitlesBottlesCoinsCount();
     shrinkRestartButtons();
     document.getElementById('new-bottles-advice').classList.remove('fullscreen-advice')
-    event.stopPropagation();
 }
 
 /**

@@ -5,11 +5,12 @@
  */
 window.addEventListener('orientationchange', () => {
     if (window.orientation == 90 || window.orientation == 180) {
+        console.log(window.orientation);
         document.getElementById('orizontal-screen-overlay').classList.add('d-none');
-        document.getElementById('areYouReady-container').classList.remove('d-none');
-    } else if (window.orientation == 0 || window.orientation == 360) {
+        
+    } else if (window.orientation == 0 || window.orientation == 360 && window.innerWidth < 950) {
         document.getElementById('orizontal-screen-overlay').classList.remove('d-none');
-        document.getElementById('areYouReady-container').classList.add('d-none');
+        console.log(window.orientation);
     }
 })
 

@@ -159,6 +159,7 @@ canvas {
 }
 
 .new-bottles-advice {
+    user-select: none;
     color: #fff;
     font-weight: 100;
     font-size: 32px;
